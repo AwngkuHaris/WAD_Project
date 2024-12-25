@@ -244,11 +244,15 @@
         </div>
     </div>
 
+
+    
+    <h1>Data from MySQL Database</h1>
+    <div>
+        <?php include('backend/fetch_data.php'); ?>
+    </div>
+
+
     <?php include 'footer.php'; ?>
-
-
-
-
 
 </body>
 

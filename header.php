@@ -18,7 +18,7 @@
     <div class="navigation">
         <nav>
             <a href="index.php">Home</a>
-            <a href="about.php">About us</a>
+            <a href="test.php">About us</a>
             <a href="services.php">Services</a>
             <a href="doctors.php">Doctors</a>
             <a href="activities.php">Activities</a>
