@@ -19,9 +19,9 @@
         <nav>
             <a href="index.php">Home</a>
             <a href="test.php">About us</a>
-            <a href="services.php">Services</a>
-            <a href="doctors.php">Doctors</a>
-            <a href="activities.php">Activities</a>
+            <a href="test2.php">Services</a>
+            <a href="test3.php">Doctors</a>
+            <a href="test4.php">Activities</a>
             <a href="promotion.php">Promotion</a>
             <a href="cart.php">Cart</a>
             <a href="login.php">Login</a>
