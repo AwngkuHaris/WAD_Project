@@ -8,7 +8,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["user_id"]. " - Name: " . $row["username"]. " - Email: " . $row["email"]. "<br>";  // Modify according to your table columns
+        echo "id: " . $row["user_id"]. " - Name: " . $row["fullName"]. " - Email: " . $row["email"]. "<br>";  // Modify according to your table columns
     }
 } else {
     echo "0 results";

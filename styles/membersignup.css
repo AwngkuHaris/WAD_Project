@@ -1,0 +1,123 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+/* General form styling */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+/* Styling for headings */
+h1 {
+    text-align: center;
+    font-family: "Yeseva One", sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Labels and inputs */
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #555;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white; 
+    color: black;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: black;
+}
+
+/* Radio buttons */
+.radio-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.radio-button label {
+    margin-top: 0;
+    display: flex;
+    align-items: center; /* Align radio button and label vertically */
+    margin-right: 20px; /* Add spacing between the radio buttons */
+}
+
+.radio-button input[type="radio"] {
+    margin-right: 5px; /* Add spacing between the radio button and the label */
+    transform: scale(1.2); /* Make the radio buttons slightly larger */
+}
+
+/* Checkbox container */
+.checkbox-container {
+    /*margin-top: 15px;*/
+    display: flex;
+    align-items: center;
+    gap: 10px; /*space between checkbox and label*/
+    flex-wrap: nowrap; 
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 0;
+    /*transform: scale(1.2);*/
+}
+
+.checkbox-container label{
+    white-space: nowrap; /*prevent the text from wrapping to next line*/
+
+}
+
+/* General spacing fix for other elements */
+form > div {
+    margin-bottom: 15px; /* Add spacing between form sections */
+}
+
+/* Submit button */
+button.submit-btn {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button.submit-btn:hover {
+    background-color: #07376a;
+}
+
+/*Responsive*/
+@media screen and (max-width: 500px) {
+    .form .column {
+      flex-wrap: wrap;
+    }
+    .form :where(.gender-option, .gender) {
+      row-gap: 15px;
+    }
+  }

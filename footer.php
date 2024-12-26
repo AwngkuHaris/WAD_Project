@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>footer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
@@ -17,9 +17,8 @@
             </div>
             <div class="footer-section">
                 <h4>Support</h4>
-                <p>111 Bijoy Sarani, Dhaka, DH 1515, Bangladesh.</p>
-                <p>exclusive@gmail.com</p>
-                <p>+88015-88888-9999</p>
+                <p>31, Lor Uni Garden 1, 94300 Kota Samarahan, Sarawak</p>
+                <p>019-400 1241</p>
             </div>
             <div class="footer-section">
                 <h4>Account</h4>
