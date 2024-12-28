@@ -1,68 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles/membersignup.css">  <!-- external css for sign up page-->
+    <link rel="stylesheet" href="../../styles/membersignup.css"> <!-- external css for sign up page-->
     <title>SignUp Page</title>
 </head>
+
 <body>
-    <form id="registrationForm" action="../../backend/register.php" method="POST" onsubmit="return validateForm()"> <!--sends form data in the body of the HTTP request-->
+    <form id="registrationForm" action="../../backend/register.php" method="POST" onsubmit="return validateForm(event)">
+        <!--sends form data in the body of the HTTP request-->
         <!--Create the registration form for user to register-->
         <div>
             <h1><b>Membership Registration</b></h1>
-            
+
             <label for="fullName">Full Name</label>
-            <br><input type="text" id="fullName" name="fullName" placeholder="Enter your full name" pattern="[A-Za-z\s]+" required>
+            <br><input type="text" id="fullName" name="fullName" placeholder="Enter your full name"
+                pattern="[A-Za-z\s]+" required>
             <span id="fullName-error" class="error-message"></span>
             <br>
 
             <label for="myKadNumber">MyKad Number</label>
-            <br><input type="text" name="myKadNumber" id="myKadNumber" placeholder="Enter your MyKad number" pattern="^\d{6}-\d{2}-\d{4}$" required>
+            <br><input type="text" name="myKadNumber" id="myKadNumber" placeholder="Enter your MyKad number"
+                pattern="^\d{6}-\d{2}-\d{4}$" required>
             <span id="myKadNumber-error" class="error-message"></span>
             <br>
-            
+
             <!--allow user to choose date from calendar-->
             <label for="dateOfBirth">Choose Date Of Birth</label>
             <br><input type="date" name="dateOfBirth" id="dateOfBirth" required>
             <span id="dateOfBirth-error" class="error-message"></span>
             <br>
-            
+
             <label for="contactNumber">Contact Number</label>
-            <br><input type="text" name="contactNumber" id="contactNumber" placeholder="Enter your contact number" pattern="^\+?\d+$" required>
+            <br><input type="text" name="contactNumber" id="contactNumber" placeholder="Enter your contact number"
+                pattern="^\+?\d+$" required>
             <span id="contactNumber-error" class="error-message"></span>
             <br>
-            
+
             <label for="email">Email</label>
-            <br><input type="email" name="email" id="email" placeholder="Enter your email" pattern="\S+@\S+\.\S+" required>
-            <span id="email-error" class="error-message"></span>
             <br>
+            <input type="email" name="email" id="email" placeholder="Enter your email" pattern="\S+@\S+\.\S+" required>
+            <span id="email-error" class="error-message"></span>
+            <span id="email-duplicate-error" class="error-message"></span> <!-- For duplicate email errors -->
+            <br>
+
 
             <label for="password">Password</label>
             <!--set the requirements when forming the password-->
-            <br><input type="password" name="password" id="password" placeholder="Enter your password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[$&+,:;=?@#|'<>.^*()%!-])[A-Za-z\d$&+,:;=?@#|'<>.^*()%!-]{6,8}$" required>
+            <br><input type="password" name="password" id="password" placeholder="Enter your password"
+                pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[$&+,:;=?@#|'<>.^*()%!-])[A-Za-z\d$&+,:;=?@#|'<>.^*()%!-]{6,8}$"
+                required>
             <span id="password-error" class="error-message"></span>
             <br>
-            
+
             <label for="gender">Gender</label>
             <div class="radio-button">
                 <input type="radio" name="gender" value="Male" required>Male
                 <input type="radio" name="gender" value="Female" required>Female
                 <span id="gender-error" class="error-message"></span>
             </div>
-            
+
             <label for="address">Address</label>
             <br><input type="text" name="address" id="address" placeholder="Enter your address" required>
             <span id="address-error" class="error-message"></span>
             <br>
-            
+
             <label for="city">City</label>
             <br><input type="text" name="city" id="city" placeholder="Enter your city" required>
             <span id="city-error" class="error-message"></span>
             <br>
-            
+
             <label for="postcode">Postcode</label>
-            <br><input type="text" name="postcode" id="postcode" placeholder="Enter your postcode" pattern="^\d{5}$" title="Please enter 5 digits of postcode only" required>
+            <br><input type="text" name="postcode" id="postcode" placeholder="Enter your postcode" pattern="^\d{5}$"
+                title="Please enter 5 digits of postcode only" required>
             <span id="postcode-error" class="error-message"></span>
             <br>
 
@@ -87,7 +99,8 @@
         </div>
     </form>
 
-     <!-- Link html to the JavaScript file -->
-     <script src="formValidation.js"></script>
+    <!-- Link html to the JavaScript file -->
+    <script src="../../javascript/formValidation.js"></script>
 </body>
+
 </html>

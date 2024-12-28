@@ -1,55 +1,57 @@
 <?php
-include('db_connect.php'); // Include database connection
+include('db_connect.php'); // Assume $conn is initialized here
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $fullName = $_POST['fullName'] ?? null;
-    $myKadNumber = $_POST['myKadNumber'] ?? null;
-    $dateOfBirth = $_POST['dateOfBirth'] ?? null;
-    $contactNumber = $_POST['contactNumber'] ?? null;
+    // Collect and sanitize inputs
+    $fullName = htmlspecialchars($_POST['fullName'] ?? '', ENT_QUOTES, 'UTF-8');
+    $myKadNumber = $_POST['myKadNumber'] ?? '';
+    $dateOfBirth = $_POST['dateOfBirth'] ?? '';
+    $contactNumber = $_POST['contactNumber'] ?? '';
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-    $password = $_POST['password'] ?? null;
-    $gender = $_POST['gender'] ?? null;
-    $address = $_POST['address'] ?? null;
-    $city = $_POST['city'] ?? null;
-    $postcode = $_POST['postcode'] ?? null;
-    $country = $_POST['country'] ?? null;
+    $password = $_POST['password'] ?? '';
+    $gender = $_POST['gender'] ?? '';
+    $address = htmlspecialchars($_POST['address'] ?? '', ENT_QUOTES, 'UTF-8');
+    $city = htmlspecialchars($_POST['city'] ?? '', ENT_QUOTES, 'UTF-8');
+    $postcode = $_POST['postcode'] ?? '';
+    $country = $_POST['country'] ?? '';
 
-    // Check if required fields are filled
-    if (!$fullName || !$myKadNumber || !$dateOfBirth || !$contactNumber || !$email || !$password || !$gender || !$address || !$city || !$postcode || !$country) {
-        die("Please fill in all the required fields.");
+    // Validate required fields
+    if (!$fullName || !$email || !$password || !$gender || !$address || !$city || !$postcode || !$country) {
+        echo json_encode(['status' => 'error', 'message' => 'Please fill in all required fields.']);
+        exit;
     }
 
-    // Validate MyKad number
-    if (!preg_match('/^\d{6}-\d{2}-\d{4}$/', $myKadNumber)) {
-        die("Invalid MyKad number.");
+    // Check if email already exists
+    $checkStmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
+    $checkStmt->bind_param("s", $email);
+    $checkStmt->execute();
+    $checkStmt->store_result();
+
+    if ($checkStmt->num_rows > 0) {
+        echo json_encode(['status' => 'error', 'message' => 'This email is already registered.']);
+        $checkStmt->close();
+        exit;
     }
 
-    // Validate password strength
-    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[$&+,:;=?@#|\'<>.^*()%!-])[A-Za-z\d$&+,:;=?@#|\'<>.^*()%!-]{6,8}$/', $password)) {
-        die("Password does not meet criteria.");
-    }
+    $checkStmt->close();
 
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    // Store user in database
-    $conn = new mysqli('localhost', 'root', '', 'anmas_samarahan');
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
+    // Insert the new user
     $stmt = $conn->prepare("INSERT INTO users (fullName, myKadNumber, dateOfBirth, contactNumber, email, password, gender, address, city, postcode, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssssssssss", $fullName, $myKadNumber, $dateOfBirth, $contactNumber, $email, $hashedPassword, $gender, $address, $city, $postcode, $country);
 
     if ($stmt->execute()) {
-        echo "Registration successful!";
+        // Redirect to the login page after successful registration
+        header("Location: ../frontend/login_register/memberlogin.html");
+        exit(); // Ensure no further code is executed
     } else {
-        echo "Error: " . $stmt->error;
+        echo json_encode(['status' => 'error', 'message' => 'Registration failed. Please try again.']);
     }
+    
 
     $stmt->close();
     $conn->close();
 }
 ?>
-
-

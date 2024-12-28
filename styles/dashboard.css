@@ -1,0 +1,234 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+}
+
+.greetings {
+    padding: 100px;
+    color: #000;
+    background-color: #CAD6FF;
+}
+
+.greetings h1 {
+    position: relative;
+    font-size: 18px;
+    margin-bottom: 5px;
+    left: 70px;
+}
+
+.greetings h2 {
+    position: relative;
+    font-size: 40px;
+    left: 70px;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #1a237e;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black; /* Adds a black border */
+    position: relative; /* Needed for positioning the arrow */
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    position: relative;
+    transition: box-shadow 0.15s ease, transform 0.15s ease; /* Smooth transition */
+}
+
+.menu a:hover {
+    background-color: #d6dbee;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Raised shadow */
+    transform: translateY(-3px); /* Moves the button upward slightly */
+}
+
+.menu a:active {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Smaller shadow for pressed effect */
+    transform: translateY(2px); /* Moves the button down slightly */
+}
+
+.menu a::after {
+    content: '➔'; /* Unicode arrow character */
+    position: absolute;
+    right: 15px; /* Position the arrow 15px from the right edge */
+    top: 50%; /* Center the arrow vertically */
+    transform: translateY(-50%); /* Adjust for exact centering */
+    font-size: 1em;
+    color: #444444; /* Match the text color */
+}
+
+
+.menu a:hover::after {
+    color: #000; /* Optional: Change arrow color on hover */
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.notifications {
+    width: 48%;
+    background-color: #A9BCFE50;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.upcoming-appointments {
+    width: 48%;
+    background-color: #A9BCFE50; /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.upcoming-appointments table {
+    width: 100%; /* Make the table take the full width of the container */
+    border-collapse: separate; /* Allows spacing between cells */
+    border-spacing: 10px; /* Adds space between table cells */
+}
+
+.upcoming-appointments th, 
+.upcoming-appointments td {
+    padding: 10px; /* Adds internal spacing within cells */
+    text-align: center; /* Align text to the left for readability */
+    border-radius: 10px;
+}
+
+.upcoming-appointments th {
+    font-weight: bold; /* Bold text for headers */
+    background-color: #CAD6FF; /* Header background color */
+    border-radius: 5px; /* Optional: Rounded corners for the header */
+}
+
+.upcoming-appointments tr {
+    border-radius: 10px;
+    background-color: #EAF0FF; /* Default background for rows */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animation */
+}
+
+.upcoming-appointments tr:nth-child(even) {
+    background-color: #F5F9FF; /* Alternating row color for better visibility */
+}
+
+.upcoming-appointments tr:hover {
+    background-color: #D6E4FF; /* Highlight row background on hover */
+    transform: translateY(-3px); /* Slightly "lift" the row */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow to make it pop */
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.history-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.payment-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.treatment-history, .payment-list {
+    width: 100%;
+    background-color: #A9BCFE50;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.treatment-history {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #A9BCFE50; /* Semi-transparent background */
+    border-radius: 10px;
+}
+
+.treatment-history table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px; /* Adds spacing between cells */
+}
+
+.treatment-history th, 
+.treatment-history td {
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.treatment-history th {
+    font-weight: bold;
+    background-color: #CAD6FF; /* Header background color */
+    border-radius: 5px;
+}
+
+.treatment-history tr {
+    border-radius: 10px;
+    background-color: #EAF0FF; /* Default background for rows */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animation */
+}
+
+.treatment-history tr:nth-child(even) {
+    background-color: #F5F9FF; /* Alternating row colors */
+}
+
+.treatment-history tr:hover {
+    background-color: #D6E4FF; /* Highlight row on hover */
+    transform: translateY(-3px); /* Add lift effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for pop-up effect */
+}

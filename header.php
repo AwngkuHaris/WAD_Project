@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANMAS Dental Specialist Clinic</title>
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="../../styles/index.css">
+
 </head>
+
 <body>
     <header class="header">
-        <img src="images/tooth_logo.png" alt="Dental Clinic Logo" class="logo">
+    <img src="/project_wad/images/tooth_logo.png" alt="Dental Clinic Logo" class="logo">
         <div class="clinic-info">
             <div class="clinic-name">KLINIK PAKAR PERGIGIAN ANMAS</div>
             <p class="clinic-tagline">ANMAS DENTAL SPECIALIST CLINIC</p>
@@ -24,7 +27,8 @@
             <a href="test4.php">Activities</a>
             <a href="promotion.php">Promotion</a>
             <a href="cart.php">Cart</a>
-            <a href="login.php">Login</a>
+            <a href="frontend/login_register/welcomepage.html">Login</a>
+            <a href="frontend/dashboard/dashboard.php">Dashboard</a>
         </nav>
     </div>
 

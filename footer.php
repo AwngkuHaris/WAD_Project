@@ -12,7 +12,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <img src="tooth-logo.svg" alt="Logo" class="footer-logo">
+                <img src="images/tooth_logo.png" alt="Logo" class="footer-logo">
                 <h3>ANMAS DENTAL SPECIALIST CLINIC</h3>
             </div>
             <div class="footer-section">

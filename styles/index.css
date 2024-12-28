@@ -6,6 +6,7 @@
     font-family: Arial, sans-serif;
 }
 
+
 /* Header styles */
 .header {
     display: flex;
@@ -13,17 +14,21 @@
     background-color: #1F2B6C;
     justify-content: center;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 20px;
     align-items: center;
     text-align: center;
 }
 
 .logo {
     position: absolute;
-    left: 20px;
-    width: 60px;
+    left: 50px;
+    top: 15px;
+    margin: 0;
+    padding: 0;
+    width: 170px; /* or your desired width */
     height: auto;
 }
+
 
 .clinic-info {
     text-align: center;
@@ -619,7 +624,8 @@ nav a:hover {
     margin: 0 auto;
 }
 
-.footer-section h3, .footer-section h4 {
+.footer-section h3,
+.footer-section h4 {
     margin-bottom: 15px;
     font-size: 18px;
     font-weight: bold;
