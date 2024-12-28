@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($role === 'registeredUser') {
                 header("Location: ../frontend/dashboard/dashboard.php");
             } else {
-                header("Location: ../dashboard.php");
+                header("Location: ../frontend/admin/dashboard/admin_dashboard.php");
             }
             exit();
         } else {

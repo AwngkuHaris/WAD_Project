@@ -1,0 +1,57 @@
+/* Row container */
+.row {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    gap: 20px; /* Space between items */
+    padding: 20px; /* Space around the row */
+    justify-content: center; /* Center items horizontally */
+    align-items: flex-start; /* Align items vertically */
+}
+
+/* Individual items */
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for items */
+.root:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Wrapper styles */
+.wrapper {
+    overflow: hidden;
+    display: none;
+    width: 200px;
+}
+
+/* Text styles */
+.text {
+    padding: 0.5em 1em;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+/* Button styles */
+.button {
+    width: 50px; /* Adjust the width of the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 1em;
+    cursor: pointer; /* Pointer cursor to indicate clickability */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add hover effects */
+}
+
+.button:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for hover effect */
+}

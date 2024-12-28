@@ -178,13 +178,7 @@ html {
     margin-bottom: 20px;
 }
 
-.payment-section {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.treatment-history, .payment-list {
+.treatment-history{
     width: 100%;
     background-color: #A9BCFE50;
     padding: 20px;
@@ -228,6 +222,61 @@ html {
 }
 
 .treatment-history tr:hover {
+    background-color: #D6E4FF; /* Highlight row on hover */
+    transform: translateY(-3px); /* Add lift effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for pop-up effect */
+}
+
+.payment-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.payment-list {
+    width: 100%;
+    background-color: #A9BCFE50;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.payment-list {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #A9BCFE50; /* Semi-transparent background */
+    border-radius: 10px;
+}
+
+.payment-list table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px; /* Adds spacing between cells */
+}
+
+.payment-list th, 
+.payment-list td {
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.payment-list th {
+    font-weight: bold;
+    background-color: #CAD6FF; /* Header background color */
+    border-radius: 5px;
+}
+
+.payment-list tr {
+    border-radius: 10px;
+    background-color: #EAF0FF; /* Default background for rows */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animation */
+}
+
+.payment-list tr:nth-child(even) {
+    background-color: #F5F9FF; /* Alternating row colors */
+}
+
+.payment-list tr:hover {
     background-color: #D6E4FF; /* Highlight row on hover */
     transform: translateY(-3px); /* Add lift effect */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for pop-up effect */

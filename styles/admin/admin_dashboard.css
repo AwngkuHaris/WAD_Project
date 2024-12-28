@@ -1,0 +1,27 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+}
+
+.greetings {
+    padding: 100px;
+    color: #000;
+    background-color: #CAD6FF;
+}
+
+.greetings h1 {
+    position: relative;
+    font-size: 18px;
+    margin-bottom: 5px;
+    left: 70px;
+}
+
+.greetings h2 {
+    position: relative;
+    font-size: 40px;
+    left: 70px;
+}

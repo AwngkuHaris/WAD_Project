@@ -35,6 +35,25 @@ $stmt_past->execute();
 $result_past = $stmt_past->get_result();
 $past_appointments = $result_past->fetch_all(MYSQLI_ASSOC);
 $stmt_past->close();
+
+// Fetch payment list
+$stmt_payments = $conn->prepare("
+    SELECT 
+        p.payment_date AS payment_date,
+        p.amount AS amount,
+        p.receipt_id AS receipt_id
+    FROM payments p
+    JOIN appointments a ON p.appointment_id = a.appointment_id
+    WHERE p.user_id = ?
+    ORDER BY p.payment_date DESC
+");
+$stmt_payments->bind_param("i", $user_id);
+$stmt_payments->execute();
+$result_payments = $stmt_payments->get_result();
+$payments = $result_payments->fetch_all(MYSQLI_ASSOC);
+$stmt_payments->close();
+
+
 $conn->close();
 ?>
 
@@ -62,7 +81,7 @@ $conn->close();
                 <a href="#">Profile</a>
                 <a href="#">Services</a>
                 <a href="book_appointment.php">Appointment</a>
-                <a href="#">Payments</a>
+                <a href="payment_page.php">Payments</a>
                 <a href="#">Cart</a>
                 <a href="logout.php">Log Out</a>
             </nav>
@@ -95,7 +114,7 @@ $conn->close();
                             </tr>
                             <?php foreach ($future_appointments as $appointment): ?>
                                 <tr>
-                                <td><?php echo htmlspecialchars(date("d-m-Y", strtotime($appointment['date']))); ?></td>
+                                    <td><?php echo htmlspecialchars(date("d-m-Y", strtotime($appointment['date']))); ?></td>
                                     <td><?php echo htmlspecialchars(date("H:i", strtotime($appointment['time']))); ?></td>
                                     <td><?php echo htmlspecialchars($appointment['status']); ?></td>
                                 </tr>
@@ -119,7 +138,7 @@ $conn->close();
                             </tr>
                             <?php foreach ($past_appointments as $appointment): ?>
                                 <tr>
-                                <td><?php echo htmlspecialchars(date("d-m-Y", strtotime($appointment['date']))); ?></td>
+                                    <td><?php echo htmlspecialchars(date("d-m-Y", strtotime($appointment['date']))); ?></td>
                                     <td><?php echo htmlspecialchars(date("H:i", strtotime($appointment['time']))); ?></td>
                                     <td><?php echo htmlspecialchars($appointment['status']); ?></td>
                                 </tr>
@@ -134,22 +153,30 @@ $conn->close();
             <section class="payment-section">
                 <div class="payment-list">
                     <h3>Payment List</h3>
-                    <table>
-                        <tr>
-                            <th>Name/Services</th>
-                            <th>Date</th>
-                            <th>Dentist</th>
-                            <th>Deposit</th>
-                            <th>Amount</th>
-                        </tr>
-                        <tr>
-                            <td>Bridge</td>
-                            <td>10 Jan 2021</td>
-                            <td>Lorem</td>
-                            <td>Paid</td>
-                            <td>Paid</td>
-                        </tr>
-                    </table>
+                    <?php if (count($payments) > 0): ?>
+                        <table>
+                            <thead>
+                                <tr>
+
+                                    <th>Payment Date</th>
+                                    <th>Amount</th>
+                                    <th>Receipt ID</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($payments as $payment): ?>
+                                    <tr>
+
+                                        <td><?php echo htmlspecialchars(date("d-m-Y", strtotime($payment['payment_date']))); ?></td>
+                                        <td><?php echo 'RM ' . htmlspecialchars(number_format($payment['amount'], 2)); ?></td>
+                                        <td><?php echo htmlspecialchars($payment['receipt_id']); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php else: ?>
+                        <p>No payments found.</p>
+                    <?php endif; ?>
                 </div>
             </section>
 
