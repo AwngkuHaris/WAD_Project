@@ -53,6 +53,11 @@ $result_payments = $stmt_payments->get_result();
 $payments = $result_payments->fetch_all(MYSQLI_ASSOC);
 $stmt_payments->close();
 
+// Fetch services to display
+$query = "SELECT service_id, name, description, price FROM services";
+$result = $conn->query($query);
+$services = $result->fetch_all(MYSQLI_ASSOC);
+
 
 $conn->close();
 ?>
@@ -64,7 +69,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../../styles/dashboard.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="/project_wad/styles/registeredUser/dashboard.css">
 </head>
 
 <body>
@@ -180,7 +185,23 @@ $conn->close();
                 </div>
             </section>
 
+            <div class="cart-container">
+                <h1>Available Services</h1>
+                <div class="services-grid">
+                    <?php foreach ($services as $service): ?>
+                        <div class="service-card">
+                            <h3><?php echo htmlspecialchars($service['name']); ?></h3>
+                            <p><?php echo htmlspecialchars($service['description']); ?></p>
+                            <p>Price: RM<?php echo number_format($service['price'], 2); ?></p>
+                            <button class="add-to-cart" data-service-id="<?php echo $service['service_id']; ?>">Add to Cart</button>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
         </main>
+
+        <script src="/project_wad/javascript/add_to_cart.js"></script>
 
 
     </div>

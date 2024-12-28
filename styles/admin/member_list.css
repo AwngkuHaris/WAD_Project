@@ -1,0 +1,213 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+}
+
+.greetings {
+    padding: 100px;
+    color: #000;
+    background-color: #CAD6FF;
+}
+
+.greetings h1 {
+    position: relative;
+    font-size: 18px;
+    margin-bottom: 5px;
+    left: 70px;
+}
+
+.greetings h2 {
+    position: relative;
+    font-size: 40px;
+    left: 70px;
+}
+
+.member-list {
+    width: 100%; /* Make it occupy the full container width */
+    background-color: rgba(169, 188, 254, 0.5); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px; /* Smooth rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.member-list h2 {
+    position: relative;
+    left: 20px; /* Indent the title slightly */
+    font-size: 20px;
+    color: #333;
+}
+
+.member-list h1 {
+    position: relative;
+    left: 20px; /* Indent the title slightly */
+    margin-bottom: 10px;
+    font-size: 30px;
+    
+}
+
+.member-list table {
+    width: 100%; /* Stretch the table to full width */
+    border-collapse: separate; /* Keep cell spacing */
+    border-spacing: 10px; /* Add spacing between cells */
+    text-align: center; /* Center-align table text */
+    margin-top: 10px; /* Add spacing between title and table */
+}
+
+.member-list th, 
+.member-list td {
+    padding: 12px; /* Add inner spacing for cells */
+    border-radius: 8px; /* Rounded corners for cells */
+    font-size: 14px; /* Readable font size */
+    border: 1px solid #000; /* Black border for separation */
+}
+
+.member-list th {
+    background-color: #CAD6FF; /* Light blue header background */
+    font-weight: bold;
+    color: #333; /* Darker text for contrast */
+    text-transform: uppercase; /* Make header text uppercase */
+}
+
+.member-list tr {
+    background-color: #EAF0FF; /* Default light background for rows */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+}
+
+.member-list tr:nth-child(even) {
+    background-color: #F5F9FF; /* Alternating row color */
+}
+
+.member-list tr:hover {
+    background-color: #D6E4FF; /* Highlighted background color */
+    transform: translateY(-3px); /* Slightly lift the row */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black; /* Adds a black border */
+    position: relative; /* Needed for positioning the arrow */
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    position: relative;
+    transition: box-shadow 0.15s ease, transform 0.15s ease; /* Smooth transition */
+}
+
+.menu a:hover {
+    background-color: #d6dbee;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Raised shadow */
+    transform: translateY(-3px); /* Moves the button upward slightly */
+}
+
+.menu a:active {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Smaller shadow for pressed effect */
+    transform: translateY(2px); /* Moves the button down slightly */
+}
+
+.menu a::after {
+    content: '➔'; /* Unicode arrow character */
+    position: absolute;
+    right: 15px; /* Position the arrow 15px from the right edge */
+    top: 50%; /* Center the arrow vertically */
+    transform: translateY(-50%); /* Adjust for exact centering */
+    font-size: 1em;
+    color: #444444; /* Match the text color */
+}
+
+
+.menu a:hover::after {
+    color: #000; /* Optional: Change arrow color on hover */
+}
+
+.search-container {
+    margin-bottom: 15px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.search-container input {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.search-container input:focus {
+    border-color: #aaa;
+}
+/* Make table headers look clickable */
+#memberTable th {
+    cursor: pointer; /* Change cursor to pointer */
+    position: relative; /* For positioning sort indicators */
+    padding-right: 20px; /* Add space for sort icons */
+}
+
+#memberTable th::after {
+    content: '⇅'; /* Default sort icon (up/down arrow) */
+    position: absolute;
+    right: 10px; /* Position the icon to the right */
+    color: #aaa; /* Light gray color for inactive state */
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+#memberTable th.asc::after {
+    content: '↑'; /* Icon for ascending sort */
+    color: #000; /* Active state color */
+}
+
+#memberTable th.desc::after {
+    content: '↓'; /* Icon for descending sort */
+    color: #000; /* Active state color */
+}

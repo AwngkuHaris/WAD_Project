@@ -1,0 +1,93 @@
+<?php
+// Include database connection
+include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/backend/db_connect.php';
+
+// Initialize $members variable
+$members = [];
+
+// Fetch only registered users (exclude admin users)
+$query = "SELECT fullName AS name, contactNumber AS phone_number, email, city FROM users WHERE role = 'registeredUser'";
+$result = $conn->query($query);
+
+// Check if the query succeeded
+if ($result && $result->num_rows > 0) {
+    // Fetch all member records as an associative array
+    $members = $result->fetch_all(MYSQLI_ASSOC);
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/project_wad/styles/admin/member_list.css">
+</head>
+
+<body>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
+    <div class="greetings">
+        <h1>Dashboard / Member list</h1>
+        <h2>Member List</h2>
+    </div>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <nav class="menu">
+                <a href="/project_wad/frontend/admin/dashboard/admin_dashboard.php">Dashboard</a>
+                <a href="/project_wad/frontend/admin/members/member_list.php">Member List</a>
+                <a href="#">Appointment</a>
+                <a href="/project_wad/frontend/admin/payment/payment_list.php">Payment List</a>
+                <a href="#">Services</a>
+                <a href="#">Activities</a>
+                <a href="#">Doctors</a>
+                <a href="#">Promotions</a>
+                <a href="logout.php">Log Out</a>
+            </nav>
+        </aside>
+
+        <section class="member-list">
+            <h1>All Members</h1>
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search members by name, email, city..." />
+            </div>
+            <table id="memberTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($members) > 0): ?>
+                        <?php foreach ($members as $member): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($member['name']); ?></td>
+                                <td><?php echo htmlspecialchars($member['phone_number']); ?></td>
+                                <td><?php echo htmlspecialchars($member['email']); ?></td>
+                                <td><?php echo htmlspecialchars($member['city']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="4">No members found.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <script src="/project_wad/javascript/member_list.js"></script>
+
+
+
+</body>
+
+</html>

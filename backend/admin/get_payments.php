@@ -19,11 +19,13 @@ if ($timeFrame === 'daily') {
     ";
 } elseif ($timeFrame === 'weekly') {
     $query = "
-        SELECT WEEK(payment_date) as week, SUM(amount) as total
-        FROM payments
-        WHERE payment_date >= CURDATE() - INTERVAL 1 MONTH
-        GROUP BY WEEK(payment_date)
-        ORDER BY WEEK(payment_date)
+        SELECT 
+    DATE(payment_date) AS date, 
+    SUM(amount) AS total
+FROM payments
+WHERE payment_date >= CURDATE() - INTERVAL 1 MONTH
+GROUP BY DATE(payment_date)
+ORDER BY DATE(payment_date)
     ";
 } elseif ($timeFrame === 'monthly') {
     $query = "
@@ -44,4 +46,3 @@ if ($result) {
 }
 
 echo json_encode($data);
-?>

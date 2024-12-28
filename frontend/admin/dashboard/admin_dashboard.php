@@ -8,53 +8,6 @@ if (!isset($_SESSION['user_id'])) {
 include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/backend/db_connect.php';
 // Include database connection
 
-// Fetch appointments for the logged-in user
-$user_id = $_SESSION['user_id'];
-
-// Fetch future appointments
-$stmt_future = $conn->prepare("
-    SELECT date, time, status 
-    FROM appointments 
-    WHERE user_id = ? AND date >= CURDATE()
-    ORDER BY date, time
-");
-$stmt_future->bind_param("i", $user_id);
-$stmt_future->execute();
-$result_future = $stmt_future->get_result();
-$future_appointments = $result_future->fetch_all(MYSQLI_ASSOC);
-$stmt_future->close();
-
-// Fetch past appointments
-$stmt_past = $conn->prepare("
-    SELECT date, time, status 
-    FROM appointments 
-    WHERE user_id = ? AND date < CURDATE()
-    ORDER BY date DESC, time DESC
-");
-$stmt_past->bind_param("i", $user_id);
-$stmt_past->execute();
-$result_past = $stmt_past->get_result();
-$past_appointments = $result_past->fetch_all(MYSQLI_ASSOC);
-$stmt_past->close();
-
-// Fetch payment list
-$stmt_payments = $conn->prepare("
-    SELECT 
-        p.payment_date AS payment_date,
-        p.amount AS amount,
-        p.receipt_id AS receipt_id
-    FROM payments p
-    JOIN appointments a ON p.appointment_id = a.appointment_id
-    WHERE p.user_id = ?
-    ORDER BY p.payment_date DESC
-");
-$stmt_payments->bind_param("i", $user_id);
-$stmt_payments->execute();
-$result_payments = $stmt_payments->get_result();
-$payments = $result_payments->fetch_all(MYSQLI_ASSOC);
-$stmt_payments->close();
-
-
 $conn->close();
 ?>
 
@@ -66,20 +19,6 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/project_wad/styles/admin/admin_dashboard.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            text-align: center;
-        }
-
-        canvas {
-            max-width: 800px;
-            height: 400px;
-            margin: 20px auto;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -90,33 +29,85 @@ $conn->close();
         <h1>Dashboard</h1>
         <h2>Welcome Back <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h2>
     </div>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <nav class="menu">
+                <a href="/project_wad/frontend/admin/dashboard/admin_dashboard.php">Dashboard</a>
+                <a href="/project_wad/frontend/admin/members/member_list.php">Member List</a>
+                <a href="#">Appointment</a>
+                <a href="/project_wad/frontend/admin/payment/payment_list.php">Payment List</a>
+                <a href="#">Services</a>
+                <a href="#">Activities</a>
+                <a href="#">Doctors</a>
+                <a href="#">Promotions</a>
+                <a href="logout.php">Log Out</a>
+            </nav>
+        </aside>
+    </div>
 
     <h1>Payments Chart</h1>
+    <label for="chartType">Select Chart Type:</label>
+    <select id="chartType">
+        <option value="bar">Bar Chart</option>
+        <option value="line">Line Chart</option>
+    </select>
     <label for="timeFrame">Select Time Frame:</label>
     <select id="timeFrame">
         <option value="daily">Daily</option>
         <option value="weekly">Weekly</option>
         <option value="monthly">Monthly</option>
     </select>
-
     <canvas id="paymentsChart"></canvas>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         const ctx = document.getElementById('paymentsChart').getContext('2d');
         let paymentsChart;
 
+        // Function to group days into weeks
+        function groupDaysIntoWeeks(data) {
+            const grouped = {};
+
+            data.forEach(item => {
+                const date = new Date(item.date);
+                const weekStart = new Date(date);
+                weekStart.setDate(date.getDate() - date.getDay()); // Get Sunday as the start of the week
+                const weekKey = weekStart.toISOString().split('T')[0]; // Use week start date as key
+
+                if (!grouped[weekKey]) {
+                    grouped[weekKey] = [];
+                }
+                grouped[weekKey].push(item);
+            });
+
+            return grouped;
+        }
+
         // Function to fetch data and render the chart
-        async function fetchAndRenderChart(timeFrame = 'daily') {
+        async function fetchAndRenderChart(timeFrame = 'daily', chartType = 'bar') {
             try {
                 const response = await fetch(`http://localhost/project_wad/backend/admin/get_payments.php?time_frame=${timeFrame}`);
-
-
                 const data = await response.json();
 
-                // Extract labels and values
-                const labels = data.map(item => item.date || item.week || item.month);
-                const totals = data.map(item => item.total);
+                let labels = [];
+                let totals = [];
+
+                if (timeFrame === 'weekly') {
+                    const groupedWeeks = groupDaysIntoWeeks(data);
+
+                    for (const weekStart in groupedWeeks) {
+                        const days = groupedWeeks[weekStart];
+                        days.forEach(day => {
+                            labels.push(day.date); // Add every day of the week to the labels
+                            totals.push(day.total);
+                        });
+                    }
+                } else {
+                    // For daily/monthly, use the data directly
+                    labels = data.map(item => item.date || item.month);
+                    totals = data.map(item => item.total);
+                }
 
                 // Destroy the chart if it already exists
                 if (paymentsChart) {
@@ -125,15 +116,16 @@ $conn->close();
 
                 // Create the chart
                 paymentsChart = new Chart(ctx, {
-                    type: 'bar',
+                    type: chartType, // Dynamic chart type
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: `Payments (${timeFrame})`,
+                            label: `Payments (${timeFrame})`, // Add "RM" directly to the label
                             data: totals,
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            backgroundColor: chartType === 'bar' ? 'rgba(75, 192, 192, 0.2)' : 'rgba(75, 192, 192, 0.1)',
                             borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
+                            borderWidth: 1,
+                            fill: chartType === 'line' // Enable fill for line chart
                         }]
                     },
                     options: {
@@ -146,16 +138,24 @@ $conn->close();
                     }
                 });
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching or rendering chart:', error);
             }
         }
 
         // Initial chart load
         fetchAndRenderChart();
 
-        // Update chart when dropdown changes
+        // Event listeners for time frame and chart type selection
         document.getElementById('timeFrame').addEventListener('change', (event) => {
-            fetchAndRenderChart(event.target.value);
+            const timeFrame = event.target.value;
+            const chartType = document.getElementById('chartType').value; // Get selected chart type
+            fetchAndRenderChart(timeFrame, chartType);
+        });
+
+        document.getElementById('chartType').addEventListener('change', (event) => {
+            const chartType = event.target.value;
+            const timeFrame = document.getElementById('timeFrame').value; // Get selected time frame
+            fetchAndRenderChart(timeFrame, chartType);
         });
     </script>
 
