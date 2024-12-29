@@ -1,0 +1,257 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f7fa;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    background-color: #CAD6FF; /* Light blue background */
+    padding: 40px 20px; /* Add space above and below */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ccc; /* Optional: Add a bottom border for separation */
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center container horizontally */
+}
+
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0;
+    font-weight: 500;
+}
+
+.breadcrumb-container p a {
+    text-decoration: none; /* Remove underline from links */
+    color: #555; /* Link color */
+}
+
+.breadcrumb-container p a:hover {
+    text-decoration: underline; /* Underline link on hover */
+    color: #333; /* Darker color on hover */
+}
+
+.breadcrumb-container h1 {
+    font-size: 2.6em;
+    color: #000;
+    margin-top: 10px; /* Space between breadcrumb text and title */
+    font-weight: bold;
+}
+
+/* Header Section */
+.about-hero {
+    background-color: #ffffff;
+    color: #333;
+    text-align: center;
+    padding: 60px 20px;
+}
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.about-hero h2 {
+    font-size: 1.9em;
+    color: #555;
+    margin-bottom: 20px;
+}
+.about-hero h3 {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.about-hero p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 20px;
+}
+.about-hero button {
+    background-color: #1f09e8;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.about-hero button:hover {
+    background-color: #3a57a1;
+    transition: 0.3s;
+}
+
+/* Picture Section */
+.about-picture {
+    background-color: #f2f2f2;
+    padding: 50px 20px;
+    text-align: center;
+}
+.image-placeholder {
+    width: 100%;
+    max-width: 600px;
+    height: 250px; 
+    margin: 0 auto;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color: #666;
+}
+
+/* Vision and Mission Section */
+.vision-mission {
+    padding: 40px 40px;
+    background: #fff;
+    text-align: center;
+}
+.vision, .mission {
+    margin: 20px auto;
+    max-width: 800px;
+}
+.vision h2, .mission h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.vision p, .mission p {
+    font-size: 1.2em;
+    color: #666;
+    line-height: 2;
+}
+.vision-mission .vision {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 40px 20px;
+    background-color: #eef1f8;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Grid Layout for Testimonial Cards */
+.testimonial-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between cards */
+    justify-content: center; /* Center the grid items horizontally */
+    align-items: stretch ; /* Ensure cards are the same height */
+    max-width: 1000px; /* Limit the width of the grid */
+    margin: 0 auto; /* Center the grid container itself */
+}
+
+/* Individual Testimonial Card */
+.testimonial {
+    position: relative;
+    background: #e8ebfa; /* Light blue background */
+    border-radius: 0px 160px 120px 160px; /* Rounded rectangle shape */
+    padding: 25px;
+    padding-top: 35px;
+    max-width: 250px; /* Limit card width */
+    min-width: 200px; /* Minimum width for responsiveness */
+    height:240px ;
+    text-align: left; /* Align content to the left */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: visible; /* Allow the circle to overlay outside the card */
+    margin: auto; /* Center each card inside its grid cell */
+}
+
+.testimonial p {
+    color: #555;
+    font-size: 0.75em;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.testimonial .rating {
+    color: #003366; /* Dark blue for stars */
+    font-size: 1.2em;
+    margin: 3px 0;
+    text-align: left; /* Ensure stars are aligned to the left */
+    display: inline-block; /* Prevent default block behavior */
+    padding: 0; /* Remove extra padding if any */
+}
+
+.testimonial .author {
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px; /* Add spacing from the rating */
+    text-align: center; /* Center the text */
+    display: block; /* Make it behave as a block element */
+    margin-left: auto; /* Horizontally center */
+    margin-right: auto; /* Horizontally center */
+    width: fit-content; /* Ensure the text width matches the content */
+}
+/* Avatar Style */
+.testimonial .avatar {
+    position: absolute;
+    bottom: 10px; /* Position slightly above the bottom edge */
+    right: 10px; /* Position slightly inside the right edge */
+    width: 85px; /* Size of avatar */
+    height: 85px;
+    background: #aaa; /* Grey placeholder for avatar */
+    border-radius: 160px 160px 0px 160px; /* Circular shape */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Ensure it overlays on top of the testimonial card */
+    border: 2px solid white; /* Optional: Add a white border for better contrast */
+    overflow: hidden;
+}
+
+.testimonial .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+    display: block;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .testimonial-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablets */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .testimonial-list {
+        grid-template-columns: 1fr; /* 1 card per row on small screens */
+    }
+}
+
+/* Quotes Section */
+.quotes {
+    padding: 40px 20px;
+    background: #f9f9f9;
+    text-align: center;
+
+}
+.quotes-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.blockquote {
+    background: #8facea;;
+    padding: 20px;
+    border-left: 4px solid #007BFF;
+    font-style: italic;
+    max-width: 300px;
+    max-height: 350px;
+    text-align: left;
+    border-radius: 8px;
+}

@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    background-color: #CAD6FF; /* Light blue background */
+    padding: 40px 20px; /* Add space above and below */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ccc; /* Optional: Add a bottom border for separation */
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center container horizontally */
+}
+
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0;
+    font-weight: 500;
+}
+
+.breadcrumb-container p a {
+    text-decoration: none; /* Remove underline from links */
+    color: #555; /* Link color */
+}
+
+.breadcrumb-container p a:hover {
+    text-decoration: underline; /* Underline link on hover */
+    color: #333; /* Darker color on hover */
+}
+
+.breadcrumb-container h1 {
+    font-size: 2.6em;
+    color: #000;
+    margin-top: 10px; /* Space between breadcrumb text and title */
+    font-weight: bold;
+}
+
+
+.services-container {
+    padding: 20px;
+
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services-grid {
+    width: 1500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
+    gap: 20px;
+}
+
+
+.services-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+
+.service-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.service-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+.service-details {
+    padding: 20px;
+}
+
+.service-details h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.service-details p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.learn-more {
+    text-decoration: none;
+    color: white;
+    background: #1a237e;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.learn-more:hover {
+    background: #3949ab;
+}
+
+/* Responsive Media Query */
+@media (max-width: 768px) {
+    .service-card {
+        padding: 15px;
+    }
+
+    .services-container h1 {
+        font-size: 2rem;
+    }
+}
+
+.filter-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#filterInput {
+    padding: 10px;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.service-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.service-card[style="display: none;"] {
+    opacity: 0;
+    transform: scale(0.95);
+}

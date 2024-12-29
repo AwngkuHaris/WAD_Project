@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.services-table-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #1a237e;
+    color: white;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.service-image {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #1a237e;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black; /* Adds a black border */
+    position: relative; /* Needed for positioning the arrow */
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    position: relative;
+    transition: box-shadow 0.15s ease, transform 0.15s ease; /* Smooth transition */
+}
+
+.menu a:hover {
+    background-color: #d6dbee;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Raised shadow */
+    transform: translateY(-3px); /* Moves the button upward slightly */
+}
+
+.menu a:active {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Smaller shadow for pressed effect */
+    transform: translateY(2px); /* Moves the button down slightly */
+}
+
+.menu a::after {
+    content: '➔'; /* Unicode arrow character */
+    position: absolute;
+    right: 15px; /* Position the arrow 15px from the right edge */
+    top: 50%; /* Center the arrow vertically */
+    transform: translateY(-50%); /* Adjust for exact centering */
+    font-size: 1em;
+    color: #444444; /* Match the text color */
+}
+
+
+.menu a:hover::after {
+    color: #000; /* Optional: Change arrow color on hover */
+}
+
+.edit-button, .delete-button {
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button {
+    background-color: #1f09e8; /* Blue color for edit */
+}
+
+.edit-button:hover {
+    background-color: #3a57a1;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red color for delete */
+}
+
+.delete-button:hover {
+    background-color: #a71d2a;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form textarea,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form textarea {
+    resize: none;
+}
+
+form button {
+    background-color: #1a237e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #3949ab;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #ddd;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #bbb;
+}
