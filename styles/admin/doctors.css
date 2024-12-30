@@ -1,0 +1,527 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Breadcrumb Section */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Ensure text aligns to the left */
+    padding-left: 20px; /* Optional: Add padding for better spacing */
+}
+/* Breadcrumb Container */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Align all text to the left */
+    padding: 0 20px;
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Breadcrumb Text */
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0; /* Remove unnecessary margins */
+}
+
+/* Breadcrumb Header */
+.breadcrumb-container h1 {
+    text-align: left !important; /* Force left alignment */
+    margin: 0 !important; /* Reset margins */
+    font-size: 2.6em;
+    color: #000;
+    margin-top: 10px;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    text-align: left; /* Ensure left alignment for the entire section */
+    background-color: #dde3f0;
+    padding: 40px 20px;
+}
+
+.breadcrumb {
+    display: block; /* Ensure it’s a block element */
+    text-align: left;
+}
+
+/* Main Content Layout */
+.content {
+    width: 70%;
+    padding: 20px;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+
+/* Blog Posts Section */
+.blog-posts {
+    flex: 3;
+}
+
+.post {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: stretch;
+    gap: 10px; /* Space between image and content */
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+/* Post Thumbnail */
+.blog-posts .post-thumbnail {
+    width: 100%; /* Expand to the full width of the parent */
+    height: 350px; /* Adjust height as needed */
+    background-color: #cccccc; /* Optional for placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* Ensure padding doesn't affect the size */
+}
+.post-details {
+    padding: 20px;
+    text-align: left;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.post-title {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.post-excerpt {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    display: inline-block;
+    background: #1f09e8;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    background: #3a57a1;
+    transition: 0.3s;
+}
+
+
+/* Sidebar */
+.sidebar {
+    padding: 20px;
+    background-color: #eef1f8;
+    border-radius: 5px;
+}
+
+.search-box,
+.recent-posts,
+.categories {
+    margin-bottom: 20px;
+}
+
+.search-box h3,
+.recent-posts h3,
+.categories h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.search-box button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1f09e8;
+    color: white;
+    font-size: 1em;
+}
+
+.search-box button:hover {
+    background-color: #3a57a1;
+}
+
+.recent-posts ul,
+.categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-posts li {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.recent-posts .post-thumbnail {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.categories li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 5px;
+}
+
+.categories .count {
+    background-color: #eef1f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+/* Form Container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Increase spacing between elements */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Form Title */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px; /* Space below the title */
+    color: #333;
+}
+
+/* Add spacing above the first label */
+.form-container label:first-of-type {
+    margin-top: 20px;
+}
+
+/* Form Inputs and Textarea */
+.form-container .form-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+}
+
+/* Textarea */
+.form-container textarea {
+    resize: vertical;
+    height: 200px;
+}
+
+/* Submit Button */
+.form-container button {
+    width: 200px;
+    align-self: center;
+    background: #1f09e8;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.form-container button:hover {
+    background: #3a57a1;
+    transition: 0.3s;
+}
+
+/* Horizontal Line for Separation */
+hr {
+    border: none;
+    border-top: 2px solid #ddd; /* Thicker horizontal line */
+    margin: 25px 0;
+}
+
+/* Wide Box Style for the Add Doctor Form Container */
+.doctor-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between elements */
+    max-width: 800px; /* Increase the width of the outer box */
+    margin: 50px auto; /* Center the box with vertical spacing */
+    padding: 40px; /* Add padding inside the box */
+    border: 1px solid #ddd; /* Add a light border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background for the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Adjust Title Spacing */
+.doctor-form-container h1 {
+    margin-bottom: 30px; /* Increase space below the title */
+    text-align: center; /* Center the title */
+    font-size: 2em; /* Larger font size for the title */
+    color: #333;
+}
+
+/* Add gap for input and button */
+.doctor-form-container input[type="file"],
+.doctor-form-container input[type="text"],
+.doctor-form-container button {
+    width: 100%; /* Ensure the input fields stretch the width of the container */
+    padding: 15px; /* Increase padding for input fields */
+    margin-bottom: 20px; /* Space between elements */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Style the Submit Button */
+.doctor-form-container button {
+    background-color: #1f09e8;
+    color: #fff;
+    font-size: 1rem;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.doctor-form-container button:hover {
+    background-color: #3a57a1;
+}
+
+/* Style for the horizontal line */
+.doctor-form-container hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.admin-actions .read-more {
+    display: inline-block;
+    background: #1f09e8;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.admin-actions .read-more:hover {
+    background: #3a57a1;
+    transition: 0.3s;
+}
+
+/* Table Styling */
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.activity-table th, .activity-table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+.activity-table th {
+    background-color: #f4f4f9;
+    font-weight: bold;
+}
+
+.activity-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Buttons in the Table */
+.edit-button {
+    background-color: #1f09e8;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.edit-button:hover {
+    background-color: #3a57a1;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.delete-button:hover {
+    background-color: #a71d2a;
+}
+
+/* Centered Create Button */
+.create-button {
+    display: inline-block;
+    background: #1f09e8; /* Primary button color */
+    color: white;
+    padding: 12px 25px; /* Larger padding for emphasis */
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em; /* Slightly larger font size */
+    font-weight: bold;
+    margin-bottom: 20px; /* Space below the button */
+    text-align: center;
+}
+
+.create-button:hover {
+    background: #3a57a1; /* Hover effect */
+    transition: 0.3s;
+}
+
+/* Full-width image styling */
+img.full-width {
+    width: 100%; /* Make the image take the full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    margin-bottom: 15px; /* Optional: Add spacing below the image */
+    object-fit: cover; /* Ensures the image fits within the container */
+}
+/* Ensure the parent container has a defined width */
+.post-details {
+    max-width: 600px; /* Set a maximum width */
+    margin: 0 auto; /* Center the container */
+    padding: 10px; /* Add padding for spacing */
+}
+img.full-width {
+    width: 100%;
+    height: 300px; /* Set a fixed height */
+    object-fit: cover; /* Crop the image to fit */
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    /* Adds a black border */
+    position: relative;
+    /* Needed for positioning the arrow */
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    position: relative;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    /* Smooth transition */
+}
+
+.menu a:hover {
+    background-color: #d6dbee;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    /* Raised shadow */
+    transform: translateY(-3px);
+    /* Moves the button upward slightly */
+}
+
+.menu a:active {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    /* Smaller shadow for pressed effect */
+    transform: translateY(2px);
+    /* Moves the button down slightly */
+}
+
+.menu a::after {
+    content: '➔';
+    /* Unicode arrow character */
+    position: absolute;
+    right: 15px;
+    /* Position the arrow 15px from the right edge */
+    top: 50%;
+    /* Center the arrow vertically */
+    transform: translateY(-50%);
+    /* Adjust for exact centering */
+    font-size: 1em;
+    color: #444444;
+    /* Match the text color */
+}
+
+
+.menu a:hover::after {
+    color: #000;
+    /* Optional: Change arrow color on hover */
+}

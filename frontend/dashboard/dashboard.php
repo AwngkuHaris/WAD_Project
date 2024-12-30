@@ -1,7 +1,13 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php"); // Redirect to login if not logged in
+    header("Location: /project_wad/frontend/login.php"); // Redirect to login if not logged in
+    exit();
+}
+
+// Check if the user is an admin
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') {
+    header("Location: /project_wad/frontend/admin/dashboard/admin_dashboard.php");
     exit();
 }
 
@@ -58,9 +64,9 @@ $query = "SELECT service_id, service_name, description, price FROM services";
 $result = $conn->query($query);
 $services = $result->fetch_all(MYSQLI_ASSOC);
 
-
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,13 +88,15 @@ $conn->close();
     <div class="dashboard-container">
         <aside class="sidebar">
             <nav class="menu">
-                <a href="#">Dashboard</a>
+                <a href="/project_wad/frontend/admin/dashboard/admin_dashboard.php">Dashboard</a>
                 <a href="#">Profile</a>
-                <a href="user_services.php">Services</a>
-                <a href="book_appointment.php">Appointment</a>
-                <a href="payment_page.php">Payments</a>
-                <a href="user_cart.php">Cart</a>
+                <a href="/project_wad/frontend/dashboard/user_services.php">Services</a>
+                <a href="/project_wad/frontend/dashboard/book_appointment.php">Appointment</a>
+                <a href="/project_wad/frontend/dashboard/payment_page.php">Payments</a>
+                <a href="/project_wad/frontend/dashboard/user_cart.php">Cart</a>
                 <a href="logout.php">Log Out</a>
+
+
             </nav>
         </aside>
 

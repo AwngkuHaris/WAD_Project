@@ -23,7 +23,7 @@
             <a href="/project_wad/index.php">Home</a>
             <a href="/project_wad/frontend/about_us/about_us.php">About Us</a>
             <a href="/project_wad/frontend/services/services.php">Services</a>
-            <a href="test3.php">Doctors</a>
+            <a href="/project_wad/frontend/doctors/doctor_list.php">Doctors</a>
             <a href="/project_wad/frontend/activities/activities.php">Activities</a>
             <a href="promotion.php">Promotion</a>
             <a href="cart.php">Cart</a>

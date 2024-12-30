@@ -1,0 +1,385 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Breadcrumb Section */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Ensure text aligns to the left */
+    padding-left: 20px; /* Optional: Add padding for better spacing */
+}
+/* Breadcrumb Container */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Align all text to the left */
+    padding: 0 20px;
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Breadcrumb Text */
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0; /* Remove unnecessary margins */
+}
+
+/* Breadcrumb Header */
+.breadcrumb-container h1 {
+    text-align: left !important; /* Force left alignment */
+    margin: 0 !important; /* Reset margins */
+    font-size: 2.6em;
+    color: #000;
+    margin-top: 10px;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    text-align: left; /* Ensure left alignment for the entire section */
+    background-color: #dde3f0;
+    padding: 40px 20px;
+}
+
+.breadcrumb {
+    display: block; /* Ensure it’s a block element */
+    text-align: left;
+}
+/* Container for the doctor list */
+.doctor-list-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Grid layout */
+.doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Wider cards */
+    gap: 30px; /* Increased spacing between cards */
+    padding-top: 35px;
+}
+
+/* Doctor Card */
+.doctor-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 390px;
+    width: 300px; /* Dynamically adjust height */
+    text-align: center;
+    margin: auto;
+
+}
+
+/* Card Image */
+.doctor-card img {
+    width: 100%;
+    height: 300px; /* Fixed height for the image */
+    object-fit: fill; /* Ensures image fits nicely */
+    background-color: #ddd;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Card Content */
+.doctor-card .card-content {
+    padding: 15px;
+    background-color: #e6f1ff;
+    
+}
+
+.doctor-card .card-content h3 {
+    margin: 0px 0 0px;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.doctor-card .card-content p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Card Footer */
+.doctor-card .card-footer {
+    background-color: #1f09e8;
+    padding: 0px;
+}
+
+.doctor-card .card-footer a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.doctor-card .card-footer a:hover {
+    text-decoration: underline;
+}
+/* Breadcrumb Section */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Ensure text aligns to the left */
+    padding-left: 20px; /* Optional: Add padding for better spacing */
+}
+/* Breadcrumb Container */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Align all text to the left */
+    padding: 0 20px;
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Breadcrumb Text */
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0; /* Remove unnecessary margins */
+}
+
+
+/* Breadcrumb Header */
+.breadcrumb-container h1 {
+    text-align: left !important; /* Force left alignment */
+    margin: 0 !important; /* Reset margins */
+    font-size: 2.6em;
+    color: #000;
+    margin-top: 10px;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    text-align: left; /* Ensure left alignment for the entire section */
+    background-color: #dde3f0;
+    padding: 40px 20px;
+}
+
+.breadcrumb {
+    display: block; /* Ensure it’s a block element */
+    text-align: left;
+}
+
+/* Content Layout */
+.content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Post Thumbnail */
+.blog-posts .post-thumbnail {
+    width: 100%; /* Expand to the full width of the parent */
+    height: 350px; /* Adjust height as needed */
+    background-color: #cccccc; /* Optional for placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* Ensure padding doesn't affect the size */
+}
+.post-details {
+    padding: 20px;
+    text-align: left;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.post-title {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.post-excerpt {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+/* Add Doctor Form Styling */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 500px;
+    margin: 50px auto; /* Add spacing above and below the form */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-container input[type="file"],
+.form-container input[type="text"],
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-container button {
+    background-color: #1f09e8;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    text-align: center;
+}
+
+.form-container button:hover {
+    background-color: #3a57a1;
+}
+
+.form-container hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+
+
+.read-more {
+    display: inline-block;
+    background: #1f09e8;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    background: #3a57a1;
+    transition: 0.3s;
+}
+
+.create-button {
+    background-color: #1f09e8;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    display: inline-block;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.create-button:hover {
+    background-color: #3a57a1;
+}
+
+/* Table Styling */
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.activity-table th, .activity-table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+.activity-table th {
+    background-color: #f4f4f9;
+    font-weight: bold;
+}
+
+.activity-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Buttons */
+.edit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.delete-button:hover {
+    background-color: #a71d2a;
+}
+/* Ensure the parent container has a defined width */
+.post-details {
+    max-width: 600px; /* Set a maximum width */
+    margin: 0 auto; /* Center the container */
+    padding: 10px; /* Add padding for spacing */
+}
+
+.image-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; /* Add spacing */
+}
+
+.image-preview img {
+    max-width: 300px; /* Maximum width the image can occupy */
+    max-height: 200px; /* Maximum height the image can occupy */
+    width: auto; /* Adjust width dynamically */
+    height: auto; /* Adjust height dynamically */
+    object-fit: contain; /* Ensure the entire image fits without distortion */
+    border-radius: 10px; /* Optional: Rounded corners */
+    border: 1px solid #ddd; /* Optional: Thin border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+}
+

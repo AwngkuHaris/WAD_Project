@@ -34,18 +34,18 @@ $conn->close();
     <div class="dashboard-container">
         <aside class="sidebar">
             <nav class="menu">
-                <a href="#">Dashboard</a>
+                <a href="/project_wad/frontend/dashboard/dashboard.php">Dashboard</a>
                 <a href="#">Profile</a>
-                <a href="#">Services</a>
-                <a href="book_appointment.php">Appointment</a>
-                <a href="payment_page.php">Payments</a>
-                <a href="user_cart.php">Cart</a>
+                <a href="/project_wad/frontend/dashboard/user_services.php">Services</a>
+                <a href="/project_wad/frontend/dashboard/book_appointment.php">Appointment</a>
+                <a href="/project_wad/frontend/dashboard/payment_page.php">Payments</a>
+                <a href="/project_wad/frontend/dashboard/user_cart.php">Cart</a>
                 <a href="logout.php">Log Out</a>
             </nav>
         </aside>
 
         <main class="services-container">
-           
+
             <div class="services-grid">
                 <?php foreach ($services as $service): ?>
                     <div class="service-card">
@@ -63,4 +63,5 @@ $conn->close();
 
     <script src="/project_wad/javascript/search_services.js"></script>
 </body>
+
 </html>
