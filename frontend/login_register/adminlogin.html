@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login Page</title>
-    <link rel="stylesheet" href="../../styles/adminlogin.css">
+    <link rel="stylesheet" href="/project_wad/styles/login_register/adminlogin.css">
 </head>
 <body>
     <div class="login-page">
@@ -13,6 +13,7 @@
             <p class="login-text">Login with Email</p>
         </div>
         <!-- Login Form -->
+        <form id="loginForm" action="../../backend/login.php" method="POST">
             <!-- Email Field -->
             <label for="email">Email Id</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -32,6 +33,6 @@
         </form>
     </div>
     <!-- Include JavaScript for validation -->
-    <script src="adminlogin_validation.js"></script>
+    <script src="../../javascript/login_validation.js"></script>
 </body>
 </html>

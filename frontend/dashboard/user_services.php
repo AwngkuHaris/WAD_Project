@@ -40,7 +40,7 @@ $conn->close();
                 <a href="/project_wad/frontend/dashboard/book_appointment.php">Appointment</a>
                 <a href="/project_wad/frontend/dashboard/payment_page.php">Payments</a>
                 <a href="/project_wad/frontend/dashboard/user_cart.php">Cart</a>
-                <a href="logout.php">Log Out</a>
+                <a href="/project_wad/backend/logout.php">Log Out</a>
             </nav>
         </aside>
 
