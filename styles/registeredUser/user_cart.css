@@ -1,0 +1,243 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+}
+
+.cart-container {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.cart-table th {
+    background-color: #f5f5f5;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #666;
+}
+
+.cart-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.cart-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.quantity-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-controls button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: #1a73e8;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 25px;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+    background-color: #1664c7;
+}
+
+.total-row {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.total-row td {
+    padding: 15px;
+}
+
+.update-cart {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.update-cart button {
+    padding: 10px 20px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.update-cart button:hover {
+    background-color: #1664c7;
+}
+
+.greetings {
+    padding: 100px;
+    color: #000;
+    background-color: #CAD6FF;
+}
+
+.greetings h1 {
+    position: relative;
+    font-size: 18px;
+    margin-bottom: 5px;
+    left: 70px;
+}
+
+.greetings h2 {
+    position: relative;
+    font-size: 40px;
+    left: 70px;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #acb7db;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    /* Adds a black border */
+    position: relative;
+    /* Needed for positioning the arrow */
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    position: relative;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    /* Smooth transition */
+}
+
+.menu a:hover {
+    background-color: #d6dbee;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    /* Raised shadow */
+    transform: translateY(-3px);
+    /* Moves the button upward slightly */
+}
+
+.menu a:active {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    /* Smaller shadow for pressed effect */
+    transform: translateY(2px);
+    /* Moves the button down slightly */
+}
+
+.menu a::after {
+    content: '➔';
+    /* Unicode arrow character */
+    position: absolute;
+    right: 15px;
+    /* Position the arrow 15px from the right edge */
+    top: 50%;
+    /* Center the arrow vertically */
+    transform: translateY(-50%);
+    /* Adjust for exact centering */
+    font-size: 1em;
+    color: #444444;
+    /* Match the text color */
+}
+
+
+.menu a:hover::after {
+    color: #000;
+    /* Optional: Change arrow color on hover */
+}
+
+.action-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #b02a37;
+}
+
+.pay-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.pay-btn:hover {
+    background-color: #218838;
+}

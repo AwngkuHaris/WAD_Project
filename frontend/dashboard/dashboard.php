@@ -54,7 +54,7 @@ $payments = $result_payments->fetch_all(MYSQLI_ASSOC);
 $stmt_payments->close();
 
 // Fetch services to display
-$query = "SELECT service_id, name, description, price FROM services";
+$query = "SELECT service_id, service_name, description, price FROM services";
 $result = $conn->query($query);
 $services = $result->fetch_all(MYSQLI_ASSOC);
 
@@ -84,10 +84,10 @@ $conn->close();
             <nav class="menu">
                 <a href="#">Dashboard</a>
                 <a href="#">Profile</a>
-                <a href="#">Services</a>
+                <a href="user_services.php">Services</a>
                 <a href="book_appointment.php">Appointment</a>
                 <a href="payment_page.php">Payments</a>
-                <a href="#">Cart</a>
+                <a href="user_cart.php">Cart</a>
                 <a href="logout.php">Log Out</a>
             </nav>
         </aside>
@@ -190,7 +190,7 @@ $conn->close();
                 <div class="services-grid">
                     <?php foreach ($services as $service): ?>
                         <div class="service-card">
-                            <h3><?php echo htmlspecialchars($service['name']); ?></h3>
+                            <h3><?php echo htmlspecialchars($service['service_name']); ?></h3>
                             <p><?php echo htmlspecialchars($service['description']); ?></p>
                             <p>Price: RM<?php echo number_format($service['price'], 2); ?></p>
                             <button class="add-to-cart" data-service-id="<?php echo $service['service_id']; ?>">Add to Cart</button>

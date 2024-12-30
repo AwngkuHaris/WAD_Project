@@ -91,7 +91,7 @@ $recent_result = $conn->query($recent_sql);
                     <?php if ($recent_result && $recent_result->num_rows > 0): ?>
                         <?php while($recent = $recent_result->fetch_assoc()): ?>
                             <li>
-                                <a href="view_activity.php?id=<?php echo $recent['id']; ?>">
+                                <a href="view_activity.php?id=<?php echo $recent['activity_id']; ?>">
                                     <?php echo htmlspecialchars($recent['title']); ?>
                                 </a>
                             </li>
