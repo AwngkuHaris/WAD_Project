@@ -84,7 +84,7 @@ $cart_items = $result->fetch_all(MYSQLI_ASSOC);
                                 <td>RM<?php echo number_format($item['total_price'], 2); ?></td>
                                 <td>
                                     <!-- Make Payment button -->
-                                    <form method="POST" action="make_payment.php" style="display: inline;">
+                                    <form method="POST" action="/project_wad/backend/make_payment.php" style="display: inline;">
                                         <input type="hidden" name="service_id" value="<?php echo $item['service_id']; ?>">
                                         <button type="submit" class="action-btn pay-btn">Make Payment</button>
                                     </form>
