@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1F2B6C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}  
+
+.receipt-container {
+    background-color: #fff;
+    width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #333;
+}
+
+.receipt-container h1 {
+    text-align: center;
+    color: #1a237e;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.receipt-container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.receipt-container .header img {
+    background-color: #1F2B6C;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.receipt-container .header h2 {
+    font-size: 35px;
+    color: #0C1841;
+    margin: 0;
+}
+
+.receipt-container .bill-to,
+.receipt-container .receipt-details {
+    margin-bottom: 10px;
+}
+
+.receipt-container,
+.receipt-container {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+.receipt-details strong {
+    display: block;
+    margin-bottom: 1px;
+    font-size: 15px;
+}
+
+.receipt-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.receipt-container table th {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #fff;
+}
+.receipt-container table td {
+    padding: 10px;
+    text-align: CENTER;
+    border: 1px solid #ddd;
+}
+
+.receipt-container table th {
+    background-color: #1F2B6C;
+    font-weight: bold;
+}
+
+.receipt-container .totals {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.receipt-container .totals strong {
+    font-size: 16px;
+    display: block;
+    margin-top: 10px;
+}
+
+.bill-to strong {
+    font-size: 20px; /* Adjust the size as needed */
+    font-weight: bold; /* Ensure it remains bold */
+    display: block; /* Ensures it starts on a new line */
+}
+
+.clinic-address{
+    margin-bottom: 25px;
+}
+
+.clinic-address strong{
+    font-size: 15px;
+}
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.bill-to,
+.receipt-details {
+    flex: 1;
+}
+.bill-to p
+ {
+    margin: 5px 0;
+}
+
+.receipt-details p{
+    margin-bottom: 0px;
+}
+.receipt-details {
+    text-align: right;
+}
+

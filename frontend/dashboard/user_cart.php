@@ -7,20 +7,20 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 $query = "
-    SELECT 
-    c.cart_id,
-    s.service_id, 
-    s.service_name, 
-    c.quantity, 
-    MAX(a.date) AS appointment_date, 
-    s.price, 
-    (s.price * c.quantity) AS total_price
-FROM cart c
-JOIN services s ON c.service_id = s.service_id
-LEFT JOIN appointments a ON c.service_id = a.service_id AND c.user_id = a.user_id
-WHERE c.user_id = ? AND c.status = 'unpaid'
-GROUP BY c.cart_id, c.service_id, s.service_name, c.quantity, s.price
 
+SELECT 
+        c.cart_id,
+        s.service_id, 
+        s.service_name, 
+        c.quantity, 
+        MAX(a.date) AS appointment_date, 
+        s.price, 
+        ((s.price * c.quantity) * 1.08) AS total_price 
+    FROM cart c
+    JOIN services s ON c.service_id = s.service_id
+    LEFT JOIN appointments a ON c.service_id = a.service_id AND c.user_id = a.user_id
+    WHERE c.user_id = ? AND c.status = 'unpaid'
+    GROUP BY c.cart_id, c.service_id, s.service_name, c.quantity, s.price
 ";
 
 $stmt = $conn->prepare($query);
@@ -51,7 +51,7 @@ $cart_items = $result->fetch_all(MYSQLI_ASSOC);
     <div class="dashboard-container">
         <aside class="sidebar">
             <nav class="menu">
-            <a href="/project_wad/frontend/dashboard/dashboard.php">Dashboard</a>
+                <a href="/project_wad/frontend/dashboard/dashboard.php">Dashboard</a>
                 <a href="#">Profile</a>
                 <a href="/project_wad/frontend/dashboard/user_services.php">Services</a>
                 <a href="/project_wad/frontend/dashboard/book_appointment.php">Appointment</a>

@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $service_id = $_POST['service_id'];
 
     // Fetch cart item details and related appointment_id
-    // Fetch cart item details and related appointment_id
     $stmt = $conn->prepare("
 SELECT c.cart_id, c.quantity, s.price, s.service_name, a.appointment_id 
 FROM cart c 
@@ -23,7 +22,8 @@ WHERE c.user_id = ? AND c.service_id = ? AND c.status = 'unpaid'
 
 
     if ($cart_item) {
-        $total_amount = $cart_item['quantity'] * $cart_item['price'];
+        $subtotal = $cart_item['quantity'] * $cart_item['price'];
+        $total_amount = $subtotal * 1.08; // Add 8% tax
         $appointment_id = $cart_item['appointment_id'];
 
         // Check if appointment_id exists
@@ -34,15 +34,15 @@ WHERE c.user_id = ? AND c.service_id = ? AND c.status = 'unpaid'
 
         // Add payment record
         $stmt = $conn->prepare("
-            INSERT INTO payments (appointment_id, user_id, service_id, amount, payment_date, status) 
-            VALUES (?, ?, ?, ?, NOW(), 'completed')
-        ");
-        $stmt->bind_param("iiid", $appointment_id, $user_id, $service_id, $total_amount);
+    INSERT INTO payments (appointment_id, user_id, service_id, amount, payment_date, status, cart_id) 
+    VALUES (?, ?, ?, ?, NOW(), 'completed', ?)
+");
+        $stmt->bind_param("iiidi", $appointment_id, $user_id, $service_id, $total_amount, $cart_item['cart_id']);
+
         $stmt->execute();
         $payment_id = $stmt->insert_id; // Get the inserted payment_id
         $stmt->close();
 
-        // Generate a receipt
         // Generate a receipt
         $stmt = $conn->prepare("
 INSERT INTO receipts (user_id, payment_id, receipt_date, amount, details, created_at) 
