@@ -41,7 +41,8 @@ if ($result && $result->num_rows > 0) {
             <?php foreach ($services as $service): ?>
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="/path/to/placeholder.jpg" alt="<?php echo htmlspecialchars($service['service_name']); ?>">
+                        <img src="/project_wad/images/services/<?php echo htmlspecialchars($service['image']); ?>"
+                            alt="<?php echo htmlspecialchars($service['service_name']); ?>">
                     </div>
                     <div class="service-details">
                         <h2><?php echo htmlspecialchars($service['service_name']); ?></h2>

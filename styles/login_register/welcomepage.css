@@ -26,12 +26,13 @@ body {
 }
 
 .left-side {
-    background-color: #ccc;
+    background-color: #1F2B6C;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
 }
+
 
 .tooth-img {
     width: 70%;

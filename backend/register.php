@@ -13,10 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $address = htmlspecialchars($_POST['address'] ?? '', ENT_QUOTES, 'UTF-8');
     $city = htmlspecialchars($_POST['city'] ?? '', ENT_QUOTES, 'UTF-8');
     $postcode = $_POST['postcode'] ?? '';
+    $state = htmlspecialchars($_POST['state'] ?? '', ENT_QUOTES, 'UTF-8'); // New field
     $country = $_POST['country'] ?? '';
 
     // Validate required fields
-    if (!$fullName || !$email || !$password || !$gender || !$address || !$city || !$postcode || !$country) {
+    if (!$fullName || !$email || !$password || !$gender || !$address || !$city || !$postcode || !$state || !$country) {
         echo json_encode(['status' => 'error', 'message' => 'Please fill in all required fields.']);
         exit;
     }
@@ -39,19 +40,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     // Insert the new user
-    $stmt = $conn->prepare("INSERT INTO users (fullName, myKadNumber, dateOfBirth, contactNumber, email, password, gender, address, city, postcode, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssssssss", $fullName, $myKadNumber, $dateOfBirth, $contactNumber, $email, $hashedPassword, $gender, $address, $city, $postcode, $country);
+    $stmt = $conn->prepare("
+        INSERT INTO users (fullName, myKadNumber, dateOfBirth, contactNumber, email, password, gender, address, city, postcode, state, country)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ");
+    $stmt->bind_param(
+        "ssssssssssss",
+        $fullName,
+        $myKadNumber,
+        $dateOfBirth,
+        $contactNumber,
+        $email,
+        $hashedPassword,
+        $gender,
+        $address,
+        $city,
+        $postcode,
+        $state,
+        $country
+    );
 
     if ($stmt->execute()) {
         // Redirect to the login page after successful registration
-        header("Location: ../frontend/login_register/memberlogin.html");
+        header("Location: project_wad/frontend/login_register/memberlogin.html");
         exit(); // Ensure no further code is executed
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Registration failed. Please try again.']);
     }
-    
 
     $stmt->close();
     $conn->close();
 }
-?>

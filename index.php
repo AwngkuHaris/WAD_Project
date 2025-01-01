@@ -43,84 +43,84 @@
 
         <div class="specialties-grid">
             <div class="specialty-item">
-                <img class="specialty-image" src="images/teeth_implant.png" alt="Implant">
+                <img class="specialty-image" src="images/services/teeth_implant.png" alt="Implant">
                 <p>Implant</p>
                 <div class="specialty-info">
                     <p>Implant is a procedure where artificial teeth roots are placed to replace missing teeth.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/teeth_crown.png" alt="Crown">
+                <img class="specialty-image" src="images/services/teeth_crown.png" alt="Crown">
                 <p>Crown</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/teeth_bridge.png" alt="Bridge">
+                <img class="specialty-image" src="images/services/teeth_bridge.png" alt="Bridge">
                 <p>Bridge</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/teeth_filling.png" alt="Filling">
+                <img class="specialty-image" src="images/services/teeth_filling.png" alt="Filling">
                 <p>Filling</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/teeth_scaling.png" alt="Scaling">
+                <img class="specialty-image" src="images/services/teeth_scaling.png" alt="Scaling">
                 <p>Scaling</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/teeth_whitening.png" alt="whitening">
+                <img class="specialty-image" src="images/services/teeth_whitening.png" alt="whitening">
                 <p>Whitening</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/teeth_braces.png" alt="braces">
+                <img class="specialty-image" src="images/services/teeth_braces.png" alt="braces">
                 <p>Braces</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/orthodontic.png" alt="Orthodontic Treatment">
+                <img class="specialty-image" src="images/services/orthodontic.png" alt="Orthodontic Treatment">
                 <p>Orthodontic Treatment</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/teeth_inlay.png" alt="Inlay">
+                <img class="specialty-image" src="images/services/teeth_inlay.png" alt="Inlay">
                 <p>Inlay</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/teeth_prosthetic.png" alt="Prosthetic">
+                <img class="specialty-image" src="images/services/teeth_prosthetic.png" alt="Prosthetic">
                 <p>Prosthetic</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/endodontis.png" alt="Endodontis">
+                <img class="specialty-image" src="images/services/endodontis.png" alt="Endodontis">
                 <p>Endodontis</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>
                 </div>
             </div>
             <div class="specialty-item">
-                <img class="specialty-image" src="images/oral_surgery.png" alt="Oral Surgery">
+                <img class="specialty-image" src="images/services/oral_surgery.png" alt="Oral Surgery">
                 <p>Oral Surgery</p>
                 <div class="specialty-info">
                     <p>A crown is a cap placed over a tooth to restore its shape and size.</p>

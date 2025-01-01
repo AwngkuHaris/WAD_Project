@@ -23,20 +23,20 @@ if (!$service) {
 }
 
 // Handle appointment booking
-// After successful appointment booking
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_SESSION['user_id'];
     $appointment_date = $_POST['appointment_date'];
     $appointment_time = $_POST['appointment_time'];
     $appointment_quantity = $_POST['appointment_quantity']; // Get the quantity
+    $service_name = $service['service_name']; // Fetch service name
 
     // Book the appointment
     $insert_query = "
-        INSERT INTO appointments (user_id, service_id, date, time, quantity, status) 
-        VALUES (?, ?, ?, ?, ?, 'Pending')
+        INSERT INTO appointments (user_id, service_id, service_name, date, time, quantity, status) 
+        VALUES (?, ?, ?, ?, ?, ?, 'Pending')
     ";
     $stmt = $conn->prepare($insert_query);
-    $stmt->bind_param("iissi", $user_id, $service_id, $appointment_date, $appointment_time, $appointment_quantity);
+    $stmt->bind_param("iisssi", $user_id, $service_id, $service_name, $appointment_date, $appointment_time, $appointment_quantity);
 
     if ($stmt->execute()) {
         // Update the cart after successful booking
@@ -62,8 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
 }
 
-
 $conn->close();
+
 ?>
 
 <!DOCTYPE html>

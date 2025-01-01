@@ -42,10 +42,14 @@ if ($result && $result->num_rows > 0) {
 
         <div class="services-table-container">
             <h1>Services List</h1>
+            <div class="create-service-button">
+                <a href="create_service.php" class="create-button">Add New Service</a>
+            </div>
+
             <table>
                 <thead>
                     <tr>
-                        
+
                         <th>Service Name</th>
                         <th>Price (RM)</th>
                         <th>Action</th>
@@ -55,7 +59,7 @@ if ($result && $result->num_rows > 0) {
                     <?php if (count($services) > 0): ?>
                         <?php foreach ($services as $service): ?>
                             <tr>
-                                
+
                                 <td><?php echo htmlspecialchars($service['service_name']); ?></td>
                                 <td>RM<?php echo number_format($service['price'], 2); ?></td>
                                 <td>

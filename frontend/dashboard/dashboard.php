@@ -89,9 +89,9 @@ $conn->close();
         <aside class="sidebar">
             <nav class="menu">
                 <a href="/project_wad/frontend/dashboard/dashboard.php">Dashboard</a>
-                <a href="#">Profile</a>
+                <a href="/project_wad/frontend/dashboard/profile.php">Profile</a>
                 <a href="/project_wad/frontend/dashboard/user_services.php">Services</a>
-                <a href="/project_wad/frontend/dashboard/book_appointment.php">Appointment</a>
+                <a href="/project_wad/frontend/dashboard/appointments.php">Appointment</a>
                 <a href="/project_wad/frontend/dashboard/payment_list.php">Payments</a>
                 <a href="/project_wad/frontend/dashboard/user_cart.php">Cart</a>
                 <a href="/project_wad/backend/logout.php">Log Out</a>
@@ -192,20 +192,6 @@ $conn->close();
                     <?php endif; ?>
                 </div>
             </section>
-
-            <div class="cart-container">
-                <h1>Available Services</h1>
-                <div class="services-grid">
-                    <?php foreach ($services as $service): ?>
-                        <div class="service-card">
-                            <h3><?php echo htmlspecialchars($service['service_name']); ?></h3>
-                            <p><?php echo htmlspecialchars($service['description']); ?></p>
-                            <p>Price: RM<?php echo number_format($service['price'], 2); ?></p>
-                            <button class="add-to-cart" data-service-id="<?php echo $service['service_id']; ?>">Add to Cart</button>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
 
         </main>
 

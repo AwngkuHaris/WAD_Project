@@ -5,6 +5,7 @@ body {
     background-color: #f9f9f9;
 }
 
+
 .services-table-container {
     max-width: 1200px;
     margin: 20px auto;
@@ -25,7 +26,8 @@ table {
     margin-top: 10px;
 }
 
-th, td {
+th,
+td {
     padding: 15px;
     text-align: left;
     border: 1px solid #ddd;
@@ -85,8 +87,10 @@ tr:hover {
     color: #444444;
     border-radius: 5px;
     text-align: center;
-    border: 1px solid black; /* Adds a black border */
-    position: relative; /* Needed for positioning the arrow */
+    border: 1px solid black;
+    /* Adds a black border */
+    position: relative;
+    /* Needed for positioning the arrow */
 }
 
 .menu a {
@@ -100,36 +104,48 @@ tr:hover {
     text-align: center;
     border: 1px solid black;
     position: relative;
-    transition: box-shadow 0.15s ease, transform 0.15s ease; /* Smooth transition */
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    /* Smooth transition */
 }
 
 .menu a:hover {
     background-color: #d6dbee;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Raised shadow */
-    transform: translateY(-3px); /* Moves the button upward slightly */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    /* Raised shadow */
+    transform: translateY(-3px);
+    /* Moves the button upward slightly */
 }
 
 .menu a:active {
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Smaller shadow for pressed effect */
-    transform: translateY(2px); /* Moves the button down slightly */
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    /* Smaller shadow for pressed effect */
+    transform: translateY(2px);
+    /* Moves the button down slightly */
 }
 
 .menu a::after {
-    content: '➔'; /* Unicode arrow character */
+    content: '➔';
+    /* Unicode arrow character */
     position: absolute;
-    right: 15px; /* Position the arrow 15px from the right edge */
-    top: 50%; /* Center the arrow vertically */
-    transform: translateY(-50%); /* Adjust for exact centering */
+    right: 15px;
+    /* Position the arrow 15px from the right edge */
+    top: 50%;
+    /* Center the arrow vertically */
+    transform: translateY(-50%);
+    /* Adjust for exact centering */
     font-size: 1em;
-    color: #444444; /* Match the text color */
+    color: #444444;
+    /* Match the text color */
 }
 
 
 .menu a:hover::after {
-    color: #000; /* Optional: Change arrow color on hover */
+    color: #000;
+    /* Optional: Change arrow color on hover */
 }
 
-.edit-button, .delete-button {
+.edit-button,
+.delete-button {
     display: inline-block;
     padding: 5px 10px;
     text-decoration: none;
@@ -141,7 +157,8 @@ tr:hover {
 }
 
 .edit-button {
-    background-color: #1f09e8; /* Blue color for edit */
+    background-color: #1f09e8;
+    /* Blue color for edit */
 }
 
 .edit-button:hover {
@@ -149,7 +166,8 @@ tr:hover {
 }
 
 .delete-button {
-    background-color: #dc3545; /* Red color for delete */
+    background-color: #dc3545;
+    /* Red color for delete */
 }
 
 .delete-button:hover {
@@ -214,3 +232,132 @@ form button:hover {
 .back-button:hover {
     background-color: #bbb;
 }
+
+.create-service-button {
+    text-align: right;
+    /* Aligns the button to the right */
+    margin-bottom: 20px;
+    /* Adds some space below the button */
+}
+
+.create-button {
+    display: inline-block;
+    background-color: #1f09e8;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.create-button:hover {
+    background-color: #155ab6;
+}
+/* Breadcrumb Container */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Align all text to the left */
+    padding: 0 20px;
+}
+
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Breadcrumb Text */
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0; /* Remove unnecessary margins */
+}
+
+/* Breadcrumb Header */
+.breadcrumb-container h1 {
+    text-align: left !important; /* Force left alignment */
+    margin: 0 !important; /* Reset margins */
+    font-size: 2.6em;
+    color: #000;
+    margin-top: 10px;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    margin-bottom: 30px;
+    text-align: left; /* Ensure left alignment for the entire section */
+    background-color: #dde3f0;
+    padding: 40px 20px;
+}
+
+.breadcrumb {
+    display: block; /* Ensure it’s a block element */
+    text-align: left;
+}
+
+.content {
+    width: 70%;
+    padding: 20px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Increase spacing between elements */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Form Title */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px; /* Space below the title */
+    color: #333;
+}
+
+/* Add spacing above the first label */
+.form-container label:first-of-type {
+    margin-top: 20px;
+}
+
+/* Form Inputs and Textarea */
+.form-container .form-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+}
+
+/* Textarea */
+.form-container textarea {
+    resize: vertical;
+    height: 200px;
+}
+
+/* Submit Button */
+.form-container button {
+    width: 200px;
+    align-self: center;
+    background: #1f09e8;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.form-container button:hover {
+    background: #3a57a1;
+    transition: 0.3s;
+}
+

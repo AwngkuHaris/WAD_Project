@@ -1,61 +1,51 @@
-body, html {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
 }
 
-.payment-container {
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.payment-container h1 {
+h1, h2 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+    margin: 20px 0;
 }
 
-.payment-table {
+.appointments-container {
+    margin: 20px auto;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
+    margin: 20px 0;
 }
 
-.payment-table th,
-.payment-table td {
-    padding: 20px 25px;
-    text-align: center;
+table th, table td {
     border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
 }
 
-.payment-table th {
+table th {
     background-color: #f4f4f4;
     font-weight: bold;
-    color: #555;
 }
 
-.payment-table tr:nth-child(even) {
+table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.payment-table tr:hover {
+table tr:hover {
     background-color: #f1f1f1;
 }
 
-.receipt-btn {
-    padding: 5px 10px;
-    text-decoration: none;
-    background-color: #1a73e8;
-    color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.receipt-btn:hover {
-    background-color: #155ab6;
+p {
+    text-align: center;
+    color: #777;
 }
 
 .greetings {
@@ -153,4 +143,32 @@ body, html {
 
 .menu a:hover::after {
     color: #000; /* Optional: Change arrow color on hover */
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.book-appointment-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.book-appointment-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.book-appointment-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }

@@ -12,18 +12,17 @@ $receipt_id = isset($_GET['receipt_id']) ? intval($_GET['receipt_id']) : 0;
 // Fetch receipt details
 $query = "
     SELECT 
-        r.receipt_id, 
-        r.receipt_date, 
-        r.amount, 
-        r.details, 
-        r.created_at,
-        c.quantity, 
-        s.price -- Fetch price for calculation
-    FROM receipts r
-    JOIN payments p ON r.payment_id = p.payment_id
-    JOIN cart c ON p.service_id = c.service_id AND p.user_id = c.user_id
-    JOIN services s ON c.service_id = s.service_id -- Join services table to fetch the price
-    WHERE r.receipt_id = ?
+    r.receipt_id, 
+    r.receipt_date, 
+    r.amount, 
+    r.created_at,
+    r.service_name, -- Assuming this is stored in receipts
+    r.service_price, -- Assuming this is stored in receipts
+    r.quantity -- Assuming this is stored in receipts
+FROM receipts r
+JOIN payments p ON r.payment_id = p.payment_id
+WHERE r.receipt_id = ?
+
 ";
 
 $stmt = $conn->prepare($query);
@@ -53,12 +52,10 @@ if (!$receipt) {
 }
 
 // Calculate SUB TOTAL and TOTAL with 8% tax
-$sub_total = $receipt['price'] * $receipt['quantity']; // Calculate subtotal
+$sub_total = $receipt['service_price'] * $receipt['quantity']; // Calculate subtotal
 $tax = $sub_total * 0.08; // Calculate 8% tax
 $total = $sub_total + $tax; // Calculate total amount
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +80,6 @@ $total = $sub_total + $tax; // Calculate total amount
                 94300 Kota Samarahan,<br>
                 Sarawak
             </p>
-
         </div>
 
         <div class="header-info">
@@ -104,7 +100,6 @@ $total = $sub_total + $tax; // Calculate total amount
             </div>
         </div>
 
-
         <table>
             <thead>
                 <tr>
@@ -115,21 +110,18 @@ $total = $sub_total + $tax; // Calculate total amount
             </thead>
             <tbody>
                 <tr>
-                    <td><?php echo htmlspecialchars($receipt['details']); ?></td>
+                    <td><?php echo htmlspecialchars($receipt['service_name']); ?></td>
                     <td><?php echo htmlspecialchars($receipt['quantity']); ?></td>
                     <td>RM<?php echo number_format($receipt['amount'], 2); ?></td>
                 </tr>
             </tbody>
         </table>
         <div class="totals">
-
             <strong>SUB TOTAL:</strong> RM<?php echo number_format($sub_total, 2); ?><br>
             <strong>SST (8%):</strong> RM<?php echo number_format($tax, 2); ?><br>
             <strong>TOTAL:</strong> RM<?php echo number_format($total, 2); ?>
         </div>
-
     </div>
-
 </body>
 
 </html>

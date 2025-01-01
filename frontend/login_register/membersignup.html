@@ -23,7 +23,8 @@
 
             <label for="myKadNumber">MyKad Number</label>
             <br><input type="text" name="myKadNumber" id="myKadNumber" placeholder="Enter your MyKad number"
-                pattern="^\d{6}-\d{2}-\d{4}$" required>
+            pattern="^\d{6}-\d{2}-\d{4}$" title="MyKad number must follow the format xxxxxx-xx-xxxx." required>
+        
             <span id="myKadNumber-error" class="error-message"></span>
             <br>
 
@@ -67,15 +68,21 @@
             <span id="address-error" class="error-message"></span>
             <br>
 
+            <label for="postcode">Postcode</label>
+            <br><input type="text" name="postcode" id="postcode" placeholder="Enter your postcode" pattern="^\d{5}$"
+                title="Please enter 5 digits of postcode only" required>
+            <span id="postcode-error" class="error-message"></span>
+            <br>
+
             <label for="city">City</label>
             <br><input type="text" name="city" id="city" placeholder="Enter your city" required>
             <span id="city-error" class="error-message"></span>
             <br>
 
-            <label for="postcode">Postcode</label>
-            <br><input type="text" name="postcode" id="postcode" placeholder="Enter your postcode" pattern="^\d{5}$"
-                title="Please enter 5 digits of postcode only" required>
-            <span id="postcode-error" class="error-message"></span>
+
+            <label for="state">State</label>
+            <br><input type="text" name="state" id="state" placeholder="Enter your state" required>
+            <span id="state-error" class="error-message"></span>
             <br>
 
             <label for="country">Country</label>
