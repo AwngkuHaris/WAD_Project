@@ -1,0 +1,382 @@
+/* General Styles */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    background-color: #CAD6FF; /* Light blue background */
+    padding: 40px 20px; /* Add space above and below */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ccc; /* Optional: Add a bottom border for separation */
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center container horizontally */
+}
+
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0;
+    font-weight: 500;
+}
+
+.breadcrumb-container p a:hover {
+    text-decoration: underline; /* Underline link on hover */
+    color: #333; /* Darker color on hover */
+}
+
+.breadcrumb-container h1 {
+    font-size: 2.6em;
+    color: #000;
+    margin-top: 10px; /* Space between breadcrumb text and title */
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Parent container for sidebar and form */
+.main-layout {
+    display: flex;
+    flex-direction: row; /* Align items horizontally */
+    justify-content: space-between; /* Space between elements */
+    align-items: flex-start; /* Align at the top */
+    gap: 20px; /* Space between sidebar and form */
+    padding: 20px;
+}
+
+/* Sidebar styles (already defined) */
+.sidebar {
+    width: 20%; /* Adjust width */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Manual Appointment Form */
+.manual-appointment-section {
+    flex: 1; /* Take the remaining space */
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    max-width: 600px; /* Optional: limit width */
+}
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black; /* Adds a black border */
+    position: relative; /* Needed for positioning the arrow */
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    position: relative;
+    transition: box-shadow 0.15s ease, transform 0.15s ease; /* Smooth transition */
+}
+
+.menu a:hover {
+    background-color: #d6dbee;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Raised shadow */
+    transform: translateY(-3px); /* Moves the button upward slightly */
+}
+
+.menu a:active {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Smaller shadow for pressed effect */
+    transform: translateY(2px); /* Moves the button down slightly */
+}
+
+.menu a::after {
+    content: '➔'; /* Unicode arrow character */
+    position: absolute;
+    right: 15px; /* Position the arrow 15px from the right edge */
+    top: 50%; /* Center the arrow vertically */
+    transform: translateY(-50%); /* Adjust for exact centering */
+    font-size: 1em;
+    color: #444444; /* Match the text color */
+}
+
+
+.menu a:hover::after {
+    color: #000; /* Optional: Change arrow color on hover */
+}
+
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Form Container */
+.manual-appointment-section {
+    flex: 1; /* Take up available space */
+    margin: 0 auto; /* Center horizontally */
+    padding: 30px; /* Add more padding for better spacing */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    max-width: 1100px; /* Increased width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for a modern look */
+}
+
+/* Appointment Form */
+form.appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Increase spacing between rows */
+}
+
+/* Center the Title */
+.manual-appointment-section h2 {
+    text-align: center; /* Center the title */
+    font-weight: bold; /* Make the title bold */
+    margin-bottom: 25px; /* Add space below the title */
+    font-size: 24px; /* Adjust the font size for better visibility */
+    color: #333; /* Optional: Title color */
+}
+
+/* Bold Labels */
+.form-group label {
+    font-weight: bold; /* Make labels bold */
+    font-size: 14px; /* Adjust the font size for readability */
+    margin-bottom: 5px; /* Add spacing below labels */
+    color: #333; /* Optional: Label color */
+}
+
+/* Form Rows */
+.form-row {
+    display: flex;
+    gap: 20px; /* Spacing between columns */
+    flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+}
+
+/* Individual Groups */
+.form-group {
+    flex: 1; /* Allow flexible growth */
+    min-width: 200px; /* Set minimum width to prevent shrinking */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Fields */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%; /* Ensure fields take full available width */
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Wide Textareas */
+textarea,
+select {
+    width: 100%; /* Full width for wide fields */
+}
+
+/* Button Centering */
+button[type="submit"] {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 250px;
+    align-self: center; /* Center within parent container */
+    margin: 20px auto; /* Center with auto margins */
+    display: block;
+}
+
+button[type="submit"]:hover {
+    background-color: #357abd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .manual-appointment-section {
+        max-width: 100%; /* Full width on smaller screens */
+        padding: 20px; /* Adjust padding */
+    }
+
+    .form-row {
+        flex-direction: column; /* Stack rows */
+    }
+
+    button[type="submit"] {
+        width: 100%; /* Full-width button */
+    }
+}
+
+/* Appointment List Section */
+.appointment-list-section {
+    background-color: #f7f7f7;
+    padding: 20px; /* Add padding inside the container */
+    margin: 30px 30px; /* Add space to the left and right */
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Container */
+.table-container {
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Horizontally center the table */
+    padding: 20px 0; /* Add padding above and below the table */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+table.appointment-list {
+    width: auto; /* Adjust table width based on content */
+    border-collapse: collapse; /* Remove double borders */
+    margin: 0 auto; /* Center table if flexbox isn't used */
+    border-radius: 8px; /* Smooth corners */
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+/* Table Header */
+table.appointment-list th {
+    background-color: #4a90e2; /* Header background color */
+    color: #fff; /* Header text color */
+    padding: 12px 15px; /* Add padding for spacing */
+    text-align: center; /* Center-align header text */
+    font-size: 14px; /* Ensure consistent font size */
+    font-weight: bold; /* Bold header text */
+    border: 1px solid #ccc; /* Optional: border for clarity */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Table Cells */
+table.appointment-list td {
+    padding: 10px 15px; /* Add padding for spacing */
+    border: 1px solid #ccc; /* Add border for table cells */
+    text-align: center; /* Center-align text */
+    font-size: 14px; /* Ensure consistent font size */
+    word-wrap: break-word; /* Handle long text by breaking it */
+}
+
+/* Table Width */
+table.appointment-list {
+    width: 95%; /* Stretch table to container */
+    table-layout: auto; /* Let column widths adjust automatically */
+    border-collapse: collapse; /* Remove double borders */
+    border-radius: 8px;
+    overflow: hidden;
+    align-self: center;
+}
+/* Center Table Content */
+table.appointment-list th,
+table.appointment-list td {
+    text-align: center; /* Center-align text in cells */
+    vertical-align: middle; /* Align content vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column; /* Stack menu and content vertically */
+    }
+
+    .sidebar {
+        width: 100%; /* Full width */
+    }
+
+    .main-content {
+        width: 100%; /* Full width */
+    }
+}
+/* Center the Title */
+.appointment-list-section h2 {
+    text-align: center; /* Center-align the title */
+    font-weight: bold; /* Make the title bold */
+    font-size: 24px; /* Increase the font size for visibility */
+    margin-bottom: 20px; /* Add some spacing below the title */
+    color: #333; /* Optional: Adjust the text color */
+}
+
+/* Button Styles */
+table.appointment-list td .edit-btn,
+table.appointment-list td .delete-btn {
+    padding: 5px 10px; /* Adjust padding for smaller buttons */
+    font-size: 14px; /* Adjust font size */
+    margin: 0 2px; /* Reduce space between buttons */
+    border: none; /* Remove extra border for a cleaner look */
+    border-radius: 4px; /* Smooth corners */
+    cursor: pointer; /* Add pointer cursor */
+}
+
+.edit-btn {
+    background-color: #ffc107; /* Yellow background for Edit */
+    color: #fff; /* White text */
+}
+
+.delete-btn {
+    background-color: #dc3545; /* Red background for Cancel */
+    color: #fff; /* White text */
+}
+
+/* Button Hover Effects */
+.edit-btn:hover {
+    background-color: #e0a800; /* Slightly darker yellow on hover */
+}
+
+.delete-btn:hover {
+    background-color: #c82333; /* Slightly darker red on hover */
+}
+
+/* Table Cell Alignment */
+table.appointment-list td {
+    padding: 10px; /* Add consistent padding for table cells */
+    text-align: center; /* Center-align content in cells */
+    vertical-align: middle; /* Align content vertically in the middle */
+}

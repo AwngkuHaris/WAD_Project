@@ -21,6 +21,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['user_name'] = $fullName;
             $_SESSION['user_role'] = $role;
 
+            // Transfer cart items if user_identifier exists
+            if (isset($_SESSION['user_identifier'])) {
+                $user_identifier = $_SESSION['user_identifier'];
+
+                // Transfer cart items from user_identifier to user_id
+                $update_cart_query = "
+                    UPDATE cart 
+                    SET user_id = ?, user_identifier = NULL 
+                    WHERE user_identifier = ?
+                ";
+                $update_stmt = $conn->prepare($update_cart_query);
+                $update_stmt->bind_param("is", $id, $user_identifier);
+                $update_stmt->execute();
+                $update_stmt->close();
+
+                // Unset user_identifier from the session
+                unset($_SESSION['user_identifier']);
+            } else {
+                // Ensure user_identifier is unset even if no cart items exist
+                unset($_SESSION['user_identifier']);
+            }
+
             // Redirect based on role
             if ($role === 'registeredUser') {
                 header("Location: ../frontend/dashboard/dashboard.php");

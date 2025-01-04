@@ -64,19 +64,22 @@ nav a {
     color: black;
     margin-right: 20px;
     font-size: 16px;
-    display: inline-block; /* Required for transform to work on inline elements */
-    transition: transform 0.2s ease, color 0.2s ease; /* Smooth animation */
+    display: inline-block;
+    /* Required for transform to work on inline elements */
+    transition: transform 0.2s ease, color 0.2s ease;
+    /* Smooth animation */
 }
 
 nav a:hover {
     color: #1a237e;
-    transform: translateY(-3px); /* Slightly lift the text */
+    transform: translateY(-3px);
+    /* Slightly lift the text */
 }
 
 
 /* Hero section styles */
 .hero-section {
-    background-color: #f5f5f5;
+    background: radial-gradient(circle, hsla(231, 55%, 27%, 1) 0%, hsla(228, 87%, 44%, 1) 100%);
     text-align: center;
     padding: 50px 20px;
 }
@@ -232,7 +235,7 @@ nav a:hover {
 .specialties-section {
     text-align: center;
     padding: 60px 20px;
-    background: #fff;
+    background: #d4defe;
 }
 
 .specialties-section h4 {
@@ -242,7 +245,7 @@ nav a:hover {
 }
 
 .specialties-section h2 {
-    font-size: 28px;
+    font-size: 40px;
     margin-bottom: 40px;
 }
 
@@ -262,6 +265,7 @@ nav a:hover {
     gap: 10px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    
 }
 
 .specialty-item:hover {
@@ -275,6 +279,8 @@ nav a:hover {
     object-fit: cover;
     border-radius: 10px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+    border: 1px solid #333;
 }
 
 .specialty-image:hover {
@@ -712,4 +718,28 @@ nav a:hover {
     border-top: 1px solid #ffffff;
     padding-top: 10px;
     color: #cfcfcf;
+}
+
+.ml2 {
+    font-weight: 600;
+    font-size: 3.0em;
+    margin-bottom: 20px;
+}
+
+.ml2 .letter {
+    display: inline-block;
+    line-height: 1em;
+    color: #fff;
+}
+
+.ml3 {
+    font-weight: 90;
+    font-size: 1.5em;
+    color: #555;
+}
+
+.ml3 .letter {
+    color: #fefafe;
+    display: inline-block;
+    line-height: 1em;
 }

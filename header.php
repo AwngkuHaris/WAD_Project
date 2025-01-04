@@ -25,8 +25,8 @@
             <a href="/project_wad/frontend/services/services.php">Services</a>
             <a href="/project_wad/frontend/doctors/doctor_list.php">Doctors</a>
             <a href="/project_wad/frontend/activities/activities.php">Activities</a>
-            <a href="promotion.php">Promotion</a>
-            <a href="cart.php">Cart</a>
+            <a href="/project_wad/frontend/promotions/promotions.php">Promotions</a>
+            <a href="/project_wad/frontend/cart/publicUser_cart.php">Cart</a>
             <a href="/project_wad/frontend/login_register/welcomepage.html">Login</a>
             <a href="/project_wad/frontend/dashboard/dashboard.php">Dashboard</a>
         </nav>

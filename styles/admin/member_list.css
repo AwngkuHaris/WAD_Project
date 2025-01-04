@@ -211,3 +211,19 @@ html {
     content: '↓'; /* Icon for descending sort */
     color: #000; /* Active state color */
 }
+
+.view-profile-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.view-profile-btn:hover {
+    background-color: #0056b3;
+}

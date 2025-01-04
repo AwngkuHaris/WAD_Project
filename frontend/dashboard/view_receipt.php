@@ -7,30 +7,32 @@ if (!isset($_SESSION['user_id'])) {
 
 include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/backend/db_connect.php';
 
-$receipt_id = isset($_GET['receipt_id']) ? intval($_GET['receipt_id']) : 0;
+$payment_id = isset($_GET['payment_id']) ? intval($_GET['payment_id']) : 0;
 
-// Fetch receipt details
+// Fetch receipt details using payment_id
 $query = "
     SELECT 
-    r.receipt_id, 
-    r.receipt_date, 
-    r.amount, 
-    r.created_at,
-    r.service_name, -- Assuming this is stored in receipts
-    r.service_price, -- Assuming this is stored in receipts
-    r.quantity -- Assuming this is stored in receipts
-FROM receipts r
-JOIN payments p ON r.payment_id = p.payment_id
-WHERE r.receipt_id = ?
-
+        r.receipt_id, 
+        r.receipt_date, 
+        r.amount, 
+        r.service_name, 
+        r.service_price, 
+        r.quantity 
+    FROM receipts r
+    WHERE r.payment_id = ?
 ";
-
 $stmt = $conn->prepare($query);
-$stmt->bind_param("i", $receipt_id);
+$stmt->bind_param("i", $payment_id);
+
 $stmt->execute();
 $result = $stmt->get_result();
 $receipt = $result->fetch_assoc();
 $stmt->close();
+
+if (!$receipt) {
+    echo "<script>alert('Receipt not found.'); window.location.href = '/project_wad/frontend/dashboard/payment_page.php';</script>";
+    exit();
+}
 
 // Fetch user details
 $stmt_user = $conn->prepare("
@@ -46,15 +48,10 @@ $stmt_user->close();
 
 $conn->close();
 
-if (!$receipt) {
-    echo "Receipt not found.";
-    exit();
-}
-
 // Calculate SUB TOTAL and TOTAL with 8% tax
-$sub_total = $receipt['service_price'] * $receipt['quantity']; // Calculate subtotal
-$tax = $sub_total * 0.08; // Calculate 8% tax
-$total = $sub_total + $tax; // Calculate total amount
+$sub_total = $receipt['service_price'] * $receipt['quantity'];
+$tax = $sub_total * 0.08; // 8% tax
+$total = $sub_total + $tax;
 ?>
 
 <!DOCTYPE html>
@@ -105,14 +102,14 @@ $total = $sub_total + $tax; // Calculate total amount
                 <tr>
                     <th>DESCRIPTION</th>
                     <th>QUANTITY</th>
-                    <th>AMOUNT</th>
+                    <th>PRICE</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><?php echo htmlspecialchars($receipt['service_name']); ?></td>
                     <td><?php echo htmlspecialchars($receipt['quantity']); ?></td>
-                    <td>RM<?php echo number_format($receipt['amount'], 2); ?></td>
+                    <td>RM<?php echo number_format($receipt['service_price'], 2); ?></td>
                 </tr>
             </tbody>
         </table>

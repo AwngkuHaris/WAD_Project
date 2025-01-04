@@ -12,8 +12,8 @@
     <?php include 'header.php'; ?>
 
     <div class="hero-section">
-        <h2 class="hero-title">Your Trusted Specialist Surgeon</h2>
-        <h1 class="hero-heading">A Smile For Your Future</h1>
+        <h2 class="ml3">Your Trusted Specialist Surgeon</h2>
+        <h1 class="ml2">A Smile For Your Future</h1>
         <div class="search-bar">
             <input type="text" placeholder="I'm looking for ....">
         </div>
@@ -38,7 +38,6 @@
     </div>
 
     <div class="specialties-section">
-        <h4>Always Caring</h4>
         <h2>Our Specialties</h2>
 
         <div class="specialties-grid">

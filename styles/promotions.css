@@ -1,0 +1,96 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.promotions-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.promotion-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.promotion-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.promotion-details {
+    padding: 15px;
+}
+
+.promotion-details h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.promotion-details p {
+    margin: 5px 0;
+}
+
+
+/* Breadcrumb Section */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Ensure text aligns to the left */
+    padding-left: 20px; /* Optional: Add padding for better spacing */
+}
+/* Breadcrumb Container */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Align all text to the left */
+    padding: 0 20px;
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Breadcrumb Text */
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0; /* Remove unnecessary margins */
+}
+
+/* Breadcrumb Header */
+.breadcrumb-container h1 {
+    text-align: left !important; /* Force left alignment */
+    margin: 0 !important; /* Reset margins */
+    font-size: 2.6em;
+    color: #000;
+    margin-top: 10px;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    text-align: left; /* Ensure left alignment for the entire section */
+    background-color: #dde3f0;
+    padding: 40px 20px;
+}
+
+.breadcrumb {
+    display: block; /* Ensure it’s a block element */
+    text-align: left;
+}

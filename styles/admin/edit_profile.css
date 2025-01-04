@@ -1,0 +1,64 @@
+.edit-profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-profile-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.edit-profile-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.actions {
+    text-align: center;
+}
+
+/* General button styling */
+.actions button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Save button styling */
+.save-btn {
+    background-color: #28a745; /* Green */
+}
+
+.save-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Cancel button styling */
+.cancel-btn {
+    background-color: #dc3545; /* Red */
+}
+
+.cancel-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+

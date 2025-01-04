@@ -29,7 +29,7 @@ html {
 .dashboard-container {
     display: flex;
     min-height: 100vh;
-    background-color: #1a237e;
+    background-color: #fff;
 }
 
 .sidebar {
@@ -60,8 +60,10 @@ html {
     color: #444444;
     border-radius: 5px;
     text-align: center;
-    border: 1px solid black; /* Adds a black border */
-    position: relative; /* Needed for positioning the arrow */
+    border: 1px solid black;
+    /* Adds a black border */
+    position: relative;
+    /* Needed for positioning the arrow */
 }
 
 .menu a {
@@ -75,31 +77,283 @@ html {
     text-align: center;
     border: 1px solid black;
     position: relative;
-    transition: box-shadow 0.15s ease, transform 0.15s ease; /* Smooth transition */
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    /* Smooth transition */
 }
 
 .menu a:hover {
     background-color: #d6dbee;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Raised shadow */
-    transform: translateY(-3px); /* Moves the button upward slightly */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    /* Raised shadow */
+    transform: translateY(-3px);
+    /* Moves the button upward slightly */
 }
 
 .menu a:active {
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); /* Smaller shadow for pressed effect */
-    transform: translateY(2px); /* Moves the button down slightly */
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    /* Smaller shadow for pressed effect */
+    transform: translateY(2px);
+    /* Moves the button down slightly */
 }
 
 .menu a::after {
-    content: '➔'; /* Unicode arrow character */
+    content: '➔';
+    /* Unicode arrow character */
     position: absolute;
-    right: 15px; /* Position the arrow 15px from the right edge */
-    top: 50%; /* Center the arrow vertically */
-    transform: translateY(-50%); /* Adjust for exact centering */
+    right: 15px;
+    /* Position the arrow 15px from the right edge */
+    top: 50%;
+    /* Center the arrow vertically */
+    transform: translateY(-50%);
+    /* Adjust for exact centering */
     font-size: 1em;
-    color: #444444; /* Match the text color */
+    color: #444444;
+    /* Match the text color */
 }
 
 
 .menu a:hover::after {
-    color: #000; /* Optional: Change arrow color on hover */
+    color: #000;
+    /* Optional: Change arrow color on hover */
+}
+
+canvas {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.chart {
+    flex: 1;
+    /* Allow charts to evenly share the space */
+    min-width: 45%;
+    /* Prevent charts from becoming too small */
+    border: 1px solid black;
+}
+
+.chart h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.content {
+    width: 80%;
+    /* Use a percentage for responsive layout */
+    max-width: 1200px;
+    /* Optional: Restrict the width */
+    margin: 0 auto;
+    /* Center the container */
+    padding: 20px;
+    /* Add padding around the content */
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect width */
+    background-color: #FAF9F6;
+}
+
+.content h1 {
+    margin-bottom: 15px;
+}
+
+
+.charts-container {
+    display: flex;
+    gap: 20px;
+    /* Space between the charts */
+    justify-content: space-between;
+    /* Push charts to the sides */
+    align-items: flex-start;
+    /* Align charts at the top */
+    width: 100%;
+    /* Use a percentage for responsive layout */
+
+}
+
+/* Style the label */
+.time-frame-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+
+}
+
+/* Style the select dropdown */
+.time-frame-select {
+    font-size: 16px;
+    /* Adjust text size */
+    padding: 5px 10px;
+    /* Add space inside the dropdown */
+    border: 2px solid #333;
+    /* Add a border */
+    border-radius: 5px;
+    /* Make the corners rounded */
+    background-color: #f9f9f9;
+    /* Set background color */
+    color: #333;
+    /* Text color */
+    cursor: pointer;
+    /* Change cursor to pointer */
+    margin: 10px;
+    margin-bottom: 15px;
+}
+
+/* Style options when hovered */
+.time-frame-select option {
+    background-color: #fff;
+    /* Option background */
+    color: #333;
+    /* Option text color */
+}
+
+/* Style dropdown on focus */
+.time-frame-select:focus {
+    outline: none;
+    /* Remove default outline */
+    border-color: #007BFF;
+    /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* Add shadow effect */
+}
+/* Appointment List Section */
+.appointment-list-section {
+    background-color: #CAD6FF;
+    padding: 20px;
+    /* Add padding inside the container */
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Table Styling */
+table.appointment-list {
+    width: auto;
+    /* Adjust table width based on content */
+    border-collapse: collapse;
+    /* Remove double borders */
+    margin: 0 auto;
+    /* Center table if flexbox isn't used */
+    border-radius: 8px;
+    /* Smooth corners */
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    /* Add shadow for better visibility */
+}
+
+/* Table Header */
+table.appointment-list th {
+    background-color: #4a90e2;
+    /* Header background color */
+    color: #fff;
+    /* Header text color */
+    padding: 12px 15px;
+    /* Add padding for spacing */
+    text-align: center;
+    /* Center-align header text */
+    font-size: 14px;
+    /* Ensure consistent font size */
+    font-weight: bold;
+    /* Bold header text */
+    border: 1px solid #ccc;
+    /* Optional: border for clarity */
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+}
+
+/* Table Cells */
+table.appointment-list td {
+    padding: 10px 15px;
+    /* Add padding for spacing */
+    border: 1px solid #ccc;
+    /* Add border for table cells */
+    text-align: center;
+    /* Center-align text */
+    font-size: 14px;
+    /* Ensure consistent font size */
+    word-wrap: break-word;
+    /* Handle long text by breaking it */
+    background-color: #f7f7f7;
+}
+
+/* Table Width */
+table.appointment-list {
+    width: 100%;
+    /* Stretch table to container */
+    table-layout: auto;
+    /* Let column widths adjust automatically */
+    border-collapse: collapse;
+    /* Remove double borders */
+    border-radius: 8px;
+    overflow: hidden;
+    align-self: center;
+}
+
+/* Center Table Content */
+table.appointment-list th,
+table.appointment-list td {
+    text-align: center;
+    /* Center-align text in cells */
+    vertical-align: middle;
+    /* Align content vertically */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+        /* Stack menu and content vertically */
+    }
+
+    .sidebar {
+        width: 100%;
+        /* Full width */
+    }
+
+    .main-content {
+        width: 100%;
+        /* Full width */
+    }
+}
+
+/* Center the Title */
+.appointment-list-section h2 {
+    text-align: center;
+    /* Center-align the title */
+    font-weight: bold;
+    /* Make the title bold */
+    font-size: 24px;
+    /* Increase the font size for visibility */
+    margin-bottom: 20px;
+    /* Add some spacing below the title */
+    color: #333;
+    /* Optional: Adjust the text color */
+}
+
+/* Button Styles */
+table.appointment-list td .edit-btn,
+table.appointment-list td .delete-btn {
+    padding: 5px 10px;
+    /* Adjust padding for smaller buttons */
+    font-size: 14px;
+    /* Adjust font size */
+    margin: 0 2px;
+    /* Reduce space between buttons */
+    border: none;
+    /* Remove extra border for a cleaner look */
+    border-radius: 4px;
+    /* Smooth corners */
+    cursor: pointer;
+    /* Add pointer cursor */
+}
+
+
+/* Table Cell Alignment */
+table.appointment-list td {
+    padding: 10px;
+    /* Add consistent padding for table cells */
+    text-align: center;
+    /* Center-align content in cells */
+    vertical-align: middle;
+    /* Align content vertically in the middle */
 }

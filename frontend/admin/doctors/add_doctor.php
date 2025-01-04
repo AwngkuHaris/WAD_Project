@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Save image to target directory
-    $target_dir = "../../../images/";
+    $target_dir = "../../../images/doctors/";
     $target_file = $target_dir . basename($image);
 
     if (!move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {

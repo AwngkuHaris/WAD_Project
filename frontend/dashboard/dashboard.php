@@ -5,6 +5,10 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+if (isset($_SESSION['user_identifier'])) {
+    unset($_SESSION['user_identifier']);
+}
+
 // Check if the user is an admin
 if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') {
     header("Location: /project_wad/frontend/admin/dashboard/admin_dashboard.php");
@@ -199,6 +203,8 @@ $conn->close();
 
 
     </div>
+
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
 </body>
 
 </html>

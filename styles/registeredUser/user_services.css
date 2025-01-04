@@ -131,7 +131,7 @@ html {
 
 /* Service Card */
 .service-card {
-    background: #fff;
+    background: #f4f4f4;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -150,6 +150,13 @@ html {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 10px;
+}
+
+.service-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* Ensure the whole image is visible */
+    background-color: #f4f4f4; /* Add a background color for contrast (optional) */
 }
 
 .service-card p {
@@ -171,4 +178,44 @@ html {
 
 .learn-more:hover {
     background: #3949ab;
+}
+
+/* Style for the quantity container */
+.quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between label and input */
+    margin-top: 10px; /* Add some spacing above */
+    margin-bottom: 10px; /* Add some spacing above */
+}
+
+/* Style for the quantity label */
+.quantity-label {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Style for the quantity input */
+.quantity-input {
+    width: 60px; /* Adjust width for better appearance */
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+/* Add focus effect for the input field */
+.quantity-input:focus {
+    border-color: #1a237e; /* Highlight border on focus */
+    outline: none;
+}
+
+.quantity-person-text {
+    font-size: 1rem;
+    color: #555;
+    font-weight: normal;
 }

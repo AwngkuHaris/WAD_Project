@@ -10,6 +10,7 @@ $data = [];
 
 // Query based on the selected time frame
 if ($timeFrame === 'daily') {
+    // Fetch payments for the last 7 days, grouped by day
     $query = "
         SELECT DATE(payment_date) as date, SUM(amount) as total
         FROM payments
@@ -18,22 +19,28 @@ if ($timeFrame === 'daily') {
         ORDER BY DATE(payment_date)
     ";
 } elseif ($timeFrame === 'weekly') {
+    // Fetch payments for the last 4 weeks, grouped by week (start date of the week)
     $query = "
         SELECT 
-    DATE(payment_date) AS date, 
-    SUM(amount) AS total
-FROM payments
-WHERE payment_date >= CURDATE() - INTERVAL 1 MONTH
-GROUP BY DATE(payment_date)
-ORDER BY DATE(payment_date)
+            DATE_FORMAT(payment_date - INTERVAL WEEKDAY(payment_date) DAY, '%Y-%m-%d') AS week_start,
+            DATE_FORMAT(payment_date - INTERVAL WEEKDAY(payment_date) DAY + INTERVAL 6 DAY, '%Y-%m-%d') AS week_end,
+            SUM(amount) as total
+        FROM payments
+        WHERE payment_date >= CURDATE() - INTERVAL 4 WEEK
+        GROUP BY DATE_FORMAT(payment_date - INTERVAL WEEKDAY(payment_date) DAY, '%Y-%m-%d')
+
+        ORDER BY week_start
     ";
 } elseif ($timeFrame === 'monthly') {
+    // Fetch payments for the last 3 months, grouped by month
     $query = "
-        SELECT MONTHNAME(payment_date) as month, SUM(amount) as total
+        SELECT DATE(payment_date) as date, SUM(amount) as total
         FROM payments
-        WHERE payment_date >= CURDATE() - INTERVAL 1 YEAR
-        GROUP BY MONTH(payment_date)
-        ORDER BY MONTH(payment_date)
+        WHERE MONTH(payment_date) = MONTH(CURDATE())
+          AND YEAR(payment_date) = YEAR(CURDATE())
+        GROUP BY DATE(payment_date)
+        ORDER BY DATE(payment_date) ASC
+
     ";
 }
 
@@ -43,6 +50,9 @@ if ($result) {
     while ($row = $result->fetch_assoc()) {
         $data[] = $row;
     }
+} else {
+    echo json_encode(['error' => 'Failed to fetch data from the database.']);
+    exit();
 }
 
 echo json_encode($data);

@@ -49,7 +49,7 @@ $recent_result = $conn->query($recent_sql);
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <div class="doctor-card">
-                        <img src="../../images/<?php echo htmlspecialchars($row['image']); ?>" alt="Doctor Image">
+                        <img src="../../images/doctors/<?php echo htmlspecialchars($row['image']); ?>" alt="Doctor Image">
                         <div class="doctor-info">
                             <h3><?php echo htmlspecialchars($row['name']); ?></h3>
                             <p><?php echo htmlspecialchars($row['specialty']); ?></p>

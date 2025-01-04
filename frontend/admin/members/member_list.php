@@ -5,8 +5,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/backend/db_connect.php';
 // Initialize $members variable
 $members = [];
 
-// Fetch only registered users (exclude admin users)
-$query = "SELECT fullName AS name, contactNumber AS phone_number, email, city FROM users WHERE role = 'registeredUser'";
+// Fetch registered users (exclude admin users)
+$query = "SELECT fullName AS name, contactNumber AS phone_number, email, CONCAT(address, ', ', postcode, ', ', city, ', ', state) AS full_address, user_id FROM users WHERE role = 'registeredUser'";
 $result = $conn->query($query);
 
 // Check if the query succeeded
@@ -15,6 +15,7 @@ if ($result && $result->num_rows > 0) {
     $members = $result->fetch_all(MYSQLI_ASSOC);
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +34,8 @@ if ($result && $result->num_rows > 0) {
     </div>
     <div class="dashboard-container">
         <aside class="sidebar">
-        <nav class="menu">
-        <a href="/project_wad/frontend/admin/dashboard/admin_dashboard.php">Dashboard</a>
+            <nav class="menu">
+                <a href="/project_wad/frontend/admin/dashboard/admin_dashboard.php">Dashboard</a>
                 <a href="/project_wad/frontend/admin/members/member_list.php">Member List</a>
                 <a href="#">Appointment</a>
                 <a href="/project_wad/frontend/admin/payment/payment_list.php">Payment List</a>
@@ -60,7 +61,8 @@ if ($result && $result->num_rows > 0) {
                         <th>Name</th>
                         <th>Phone Number</th>
                         <th>Email</th>
-                        <th>City</th>
+                        <th>Address</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,12 +72,17 @@ if ($result && $result->num_rows > 0) {
                                 <td><?php echo htmlspecialchars($member['name']); ?></td>
                                 <td><?php echo htmlspecialchars($member['phone_number']); ?></td>
                                 <td><?php echo htmlspecialchars($member['email']); ?></td>
-                                <td><?php echo htmlspecialchars($member['city']); ?></td>
+                                <td><?php echo htmlspecialchars($member['full_address']); ?></td>
+                                <td>
+                                    <a href="/project_wad/frontend/admin/members/view_profile.php?user_id=<?php echo $member['user_id']; ?>">
+                                        <button class="view-profile-btn">View Full Profile</button>
+                                    </a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="4">No members found.</td>
+                            <td colspan="5">No members found.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
@@ -85,8 +92,6 @@ if ($result && $result->num_rows > 0) {
     </div>
 
     <script src="/project_wad/javascript/member_list.js"></script>
-
-
 
 </body>
 

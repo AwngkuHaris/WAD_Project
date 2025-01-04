@@ -1,132 +1,91 @@
 <?php
 session_start();
+include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/backend/db_connect.php';
+
+// Ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php"); // Redirect to login if not logged in
+    header("Location: /project_wad/frontend/login_register/welcomepage.html");
     exit();
 }
 
-include '../../backend/db_connect.php';
-
-// Fetch service details based on the service_id passed in the URL
-$service_id = isset($_GET['service_id']) ? intval($_GET['service_id']) : 0;
-
-$query = "SELECT service_name, price FROM services WHERE service_id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $service_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$service = $result->fetch_assoc();
-
-if (!$service) {
-    echo "Service not found.";
-    exit();
-}
-
-// Handle appointment booking
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Ensure `service_id` is received from the form
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['service_id'])) {
     $user_id = $_SESSION['user_id'];
-    $appointment_date = $_POST['appointment_date'];
-    $appointment_time = $_POST['appointment_time'];
-    $appointment_quantity = $_POST['appointment_quantity']; // Get the quantity
-    $service_name = $service['service_name']; // Fetch service name
+    $service_id = intval($_POST['service_id']);
 
-    // Book the appointment
-    $insert_query = "
-        INSERT INTO appointments (user_id, service_id, service_name, date, time, quantity, status) 
-        VALUES (?, ?, ?, ?, ?, ?, 'Pending')
+    // Fetch cart details for the selected service_id
+    $cart_query = "
+        SELECT c.cart_id, c.quantity, s.service_name 
+        FROM cart c
+        JOIN services s ON c.service_id = s.service_id
+        WHERE c.user_id = ? AND c.service_id = ? AND c.status = 'unpaid'
     ";
-    $stmt = $conn->prepare($insert_query);
-    $stmt->bind_param("iisssi", $user_id, $service_id, $service_name, $appointment_date, $appointment_time, $appointment_quantity);
+    $stmt_cart = $conn->prepare($cart_query);
+    $stmt_cart->bind_param("ii", $user_id, $service_id);
+    $stmt_cart->execute();
+    $cart_result = $stmt_cart->get_result();
+    $cart_item = $cart_result->fetch_assoc();
 
-    if ($stmt->execute()) {
-        // Update the cart after successful booking
-        $cart_query = "
-            INSERT INTO cart (user_id, service_id, quantity) 
-            VALUES (?, ?, ?)
-            ON DUPLICATE KEY UPDATE 
-            quantity = quantity + VALUES(quantity)
-        ";
-        $cart_stmt = $conn->prepare($cart_query);
-        $cart_stmt->bind_param("iii", $user_id, $service_id, $appointment_quantity);
-
-        if ($cart_stmt->execute()) {
-            echo "<script>alert('Appointment booked and cart updated successfully!'); window.location.href = 'user_services.php';</script>";
-        } else {
-            echo "Appointment booked, but failed to update the cart.";
-        }
-        $cart_stmt->close();
-    } else {
-        echo "Error booking appointment.";
-    }
-
-    $stmt->close();
-}
-
-$conn->close();
-
+    if ($cart_item) {
+        // Display appointment form with pre-filled details
 ?>
+        <!DOCTYPE html>
+        <html lang="en">
 
-<!DOCTYPE html>
-<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Book Appointment</title>
+            <link rel="stylesheet" href="/project_wad/styles/registeredUser/book_appointment.css">
+        </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Appointment</title>
-    <link rel="stylesheet" href="/project_wad/styles/registeredUser/book_appointment.css">
-</head>
+        <body>
+            <div class="container">
+                <h1>Book Appointment</h1>
+                <form action="/project_wad/backend/process_appointment.php" method="POST">
+                    <div class="form-group">
+                        <label>Service Name</label>
+                        <input type="text" value="<?php echo htmlspecialchars($cart_item['service_name']); ?>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" value="<?php echo htmlspecialchars($cart_item['quantity']); ?>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment_date">Appointment Date</label>
+                        <input type="date" id="appointment_date" name="appointment_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment_time">Appointment Time</label>
+                        <select id="appointment_time" name="appointment_time" required>
+                            <option value="">Select a time</option>
+                            <option value="09:00 AM">09:00 AM</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="02:00 PM">02:00 PM</option>
+                            <option value="03:00 PM">03:00 PM</option>
+                            <option value="04:00 PM">04:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="problem_description">Describe your problem</label>
+                        <textarea id="problem_description" name="problem_description" placeholder="Describe your problem"></textarea>
+                    </div>
+                    <input type="hidden" name="service_id" value="<?php echo $service_id; ?>">
+                    <input type="hidden" name="cart_id" value="<?php echo $cart_item['cart_id']; ?>">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </body>
 
-<body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
-
-    <div class="booking-container">
-        <h1>Book Appointment</h1>
-        <h2>Service: <?php echo htmlspecialchars($service['service_name']); ?></h2>
-        <p>Price: RM<?php echo number_format($service['price'], 2); ?></p>
-
-        <form method="POST" action="">
-            <label for="appointment_date">Select Date:</label>
-            <input
-                type="date"
-                id="appointment_date"
-                name="appointment_date"
-                min="<?php echo date('Y-m-d'); ?>"
-                required>
-
-            <label for="appointment_time">Select Time:</label>
-            <select id="appointment_time" name="appointment_time" required>
-                <option value="08:00">08:00</option>
-                <option value="08:30">08:30</option>
-                <option value="09:00">09:00</option>
-                <option value="09:30">09:30</option>
-                <option value="10:00">10:00</option>
-                <option value="10:30">10:30</option>
-                <option value="11:00">11:00</option>
-                <option value="11:30">11:30</option>
-                <option value="12:00">12:00</option>
-                <option value="12:30">12:30</option>
-                <option value="13:00">13:00</option>
-                <option value="13:30">13:30</option>
-                <option value="14:00">14:00</option>
-                <option value="14:30">14:30</option>
-                <option value="15:00">15:00</option>
-                <option value="15:30">15:30</option>
-                <option value="16:00">16:00</option>
-                <option value="16:30">16:30</option>
-                <option value="17:00">17:00</option>
-                <option value="17:30">17:30</option>
-            </select>
-
-            <label for="appointment_quantity">Select Quantity:</label>
-            <select id="appointment_quantity" name="appointment_quantity" required>
-                <option value="1">1 Person</option>
-                <option value="2">2 People</option>
-                <option value="3">3 People</option>
-            </select>
-
-            <button type="submit" class="book-btn">Book Appointment</button>
-        </form>
-    </div>
-</body>
-
-</html>
+        </html>
+<?php
+    } else {
+        echo "<script>alert('No cart item found for this service.'); window.location.href = '/project_wad/frontend/dashboard/user_cart.php';</script>";
+    }
+    $stmt_cart->close();
+} else {
+    echo "<script>alert('Invalid request.'); window.location.href = '/project_wad/frontend/dashboard/user_cart.php';</script>";
+}
+$conn->close();
+?>

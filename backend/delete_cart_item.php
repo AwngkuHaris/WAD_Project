@@ -9,19 +9,26 @@ if (isset($_POST['cart_item_id']) && !empty($_POST['cart_item_id'])) {
     $conn->begin_transaction();
 
     try {
-        // Delete associated appointment
-        $delete_appointment_query = "
-            DELETE FROM appointments 
-            WHERE user_id = ? 
-              AND service_id = (
-                  SELECT service_id 
-                  FROM cart 
-                  WHERE cart_id = ?
-              )
-        ";
-        $stmt = $conn->prepare($delete_appointment_query);
-        $stmt->bind_param("ii", $_SESSION['user_id'], $cart_id);
+        // Fetch the service_id from the cart for debugging
+        $fetch_service_query = "SELECT service_id FROM cart WHERE cart_id = ?";
+        $stmt = $conn->prepare($fetch_service_query);
+        $stmt->bind_param("i", $cart_id);
         $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $service_id = $result->fetch_assoc()['service_id'];
+
+            // Delete associated appointment
+            $delete_appointment_query = "
+                DELETE FROM appointments 
+                WHERE user_id = ? 
+                  AND service_id = ?
+            ";
+            $stmt = $conn->prepare($delete_appointment_query);
+            $stmt->bind_param("ii", $_SESSION['user_id'], $service_id);
+            $stmt->execute();
+        }
 
         // Delete the cart item
         $delete_cart_query = "DELETE FROM cart WHERE cart_id = ?";
@@ -36,7 +43,7 @@ if (isset($_POST['cart_item_id']) && !empty($_POST['cart_item_id'])) {
     } catch (Exception $e) {
         // Rollback transaction
         $conn->rollback();
-        echo "<script>alert('Failed to delete item. Please try again.'); window.location.href = '/project_wad/frontend/dashboard/user_cart.php';</script>";
+        echo "<script>alert('Failed to delete item: " . $e->getMessage() . "'); window.location.href = '/project_wad/frontend/dashboard/user_cart.php';</script>";
     }
 } else {
     echo "<script>alert('Invalid request. Cart item ID is missing.'); window.location.href = '/project_wad/frontend/dashboard/user_cart.php';</script>";

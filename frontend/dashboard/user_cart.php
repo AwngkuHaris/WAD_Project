@@ -7,18 +7,15 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 $query = "
-
-SELECT 
+    SELECT 
         c.cart_id,
         s.service_id, 
         s.service_name, 
         c.quantity, 
-        MAX(a.date) AS appointment_date, 
         s.price, 
         ((s.price * c.quantity) * 1.08) AS total_price 
     FROM cart c
     JOIN services s ON c.service_id = s.service_id
-    LEFT JOIN appointments a ON c.service_id = a.service_id AND c.user_id = a.user_id
     WHERE c.user_id = ? AND c.status = 'unpaid'
     GROUP BY c.cart_id, c.service_id, s.service_name, c.quantity, s.price
 ";
@@ -28,8 +25,8 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $cart_items = $result->fetch_all(MYSQLI_ASSOC);
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +64,6 @@ $cart_items = $result->fetch_all(MYSQLI_ASSOC);
                     <tr>
                         <th>Service</th>
                         <th>Quantity</th>
-                        <th>Appointment Date</th>
                         <th>Price (per person)</th>
                         <th>Total Price</th>
                         <th>Actions</th> <!-- New column for actions -->
@@ -79,14 +75,13 @@ $cart_items = $result->fetch_all(MYSQLI_ASSOC);
                             <tr>
                                 <td><?php echo htmlspecialchars($item['service_name']); ?></td>
                                 <td><?php echo htmlspecialchars($item['quantity']); ?></td>
-                                <td><?php echo htmlspecialchars(date('d-m-Y', strtotime($item['appointment_date']))); ?></td>
                                 <td>RM<?php echo number_format($item['price'], 2); ?></td>
                                 <td>RM<?php echo number_format($item['total_price'], 2); ?></td>
                                 <td>
-                                    <!-- Make Payment button -->
-                                    <form method="POST" action="/project_wad/backend/make_payment.php" style="display: inline;">
+                                    <!-- Book Appointment button -->
+                                    <form method="POST" action="/project_wad/frontend/dashboard/book_appointment.php" style="display: inline;">
                                         <input type="hidden" name="service_id" value="<?php echo $item['service_id']; ?>">
-                                        <button type="submit" class="action-btn pay-btn">Make Payment</button>
+                                        <button type="submit" class="action-btn pay-btn">Book Appointment</button>
                                     </form>
                                     <!-- Delete button -->
                                     <form method="POST" action="/project_wad/backend/delete_cart_item.php" style="display: inline;">
@@ -98,19 +93,20 @@ $cart_items = $result->fetch_all(MYSQLI_ASSOC);
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="6">Your cart is empty.</td>
+                            <td colspan="5">Your cart is empty.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4" style="text-align: right; font-weight: bold;">Total:</td>
+                        <td colspan="3" style="text-align: right; font-weight: bold;">Total:</td>
                         <td colspan="2" style="font-weight: bold;">
                             RM<?php echo number_format(array_sum(array_column($cart_items, 'total_price')), 2); ?>
                         </td>
                     </tr>
                 </tfoot>
             </table>
+
         </div>
 
     </div>

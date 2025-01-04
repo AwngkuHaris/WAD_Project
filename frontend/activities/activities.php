@@ -56,7 +56,7 @@ $recent_result = $conn->query($recent_sql);
                     <div class="post">
                         <!-- Post Thumbnail -->
                         <div class="post-thumbnail">
-                        <img src="../../images/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="../../images/activities/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
 
                         <!-- Post Details -->
