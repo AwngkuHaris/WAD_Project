@@ -26,7 +26,7 @@ $conn->close();
 
 <body>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
 
     <div class="greetings">
         <h1>Dashboard</h1>
@@ -92,6 +92,8 @@ $conn->close();
             </div>
         </main>
     </div>
+
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
 
 
 

@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
 
     <!-- Breadcrumb Section -->
     <section class="breadcrumb">

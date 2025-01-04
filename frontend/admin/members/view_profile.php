@@ -51,7 +51,7 @@ if (!$user) {
 </head>
 
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
     <div class="profile-container">
         <h1>Member Profile</h1>
         <div class="profile-details">
@@ -78,6 +78,8 @@ if (!$user) {
         </div>
 
     </div>
+
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
 </body>
 
 </html>

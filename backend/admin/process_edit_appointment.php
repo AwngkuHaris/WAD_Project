@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'];
     $address = $_POST['address'];
     $problem = $_POST['problem'];
-    $date = $_POST['date'];
+    $date = $_POST['appointment_date'];
     $time = $_POST['time'];
     $service_id = $_POST['service_id'];
     $status = $_POST['status'];

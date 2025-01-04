@@ -1,29 +1,13 @@
 <?php
-// Include database connection 
+// Include database connection
 include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/backend/db_connect.php';
 
 // Fetch services from the database
 $services_sql = "SELECT service_id, service_name FROM services";
 $services_result = $conn->query($services_sql);
 
-// Fetch appointments from the database
-$sql = "SELECT appointment_id, name, phone, service_id, date, time, status FROM appointments";
-$result = $conn->query($sql);
-
-if (isset($_GET['delete_id'])) {
-    $delete_id = $_GET['delete_id'];
-    $delete_sql = "DELETE FROM appointments WHERE appointment_id = ?";
-    $stmt = $conn->prepare($delete_sql);
-    $stmt->bind_param("i", $delete_id);
-    if ($stmt->execute()) {
-        echo "<script>alert('Appointment canceled successfully.'); window.location.href='admin_appointment.php';</script>";
-    } else {
-        echo "<script>alert('Error canceling appointment.');</script>";
-    }
-    $stmt->close();
-}
-
-$sql = $sql = "
+// Fetch all appointments from the database
+$sql = "
 SELECT 
     a.appointment_id, 
     a.name, 
@@ -40,6 +24,19 @@ ORDER BY a.date, a.time
 
 $result = $conn->query($sql);
 
+// Handle appointment deletion
+if (isset($_GET['delete_id'])) {
+    $delete_id = $_GET['delete_id'];
+    $delete_sql = "DELETE FROM appointments WHERE appointment_id = ?";
+    $stmt = $conn->prepare($delete_sql);
+    $stmt->bind_param("i", $delete_id);
+    if ($stmt->execute()) {
+        echo "<script>alert('Appointment canceled successfully.'); window.location.href='admin_appointment.php';</script>";
+    } else {
+        echo "<script>alert('Error canceling appointment.');</script>";
+    }
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,12 +47,11 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Manage Appointments</title>
     <link rel="stylesheet" href="/project_wad/styles/admin/admin_appointment.css">
-
 </head>
 
 <body>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
 
     <section class="breadcrumb">
         <div class="breadcrumb-container">
@@ -79,10 +75,11 @@ $result = $conn->query($sql);
             </nav>
         </aside>
 
+        <!-- Manual Appointment Section -->
         <section class="manual-appointment-section">
             <h2>Manual Appointment Form</h2>
             <form method="POST" action="/project_wad/backend/admin/process_appointment.php" class="appointment-form">
-                <!-- Row 1: Name and Email -->
+                <!-- Form Fields -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Name:</label>
@@ -93,8 +90,6 @@ $result = $conn->query($sql);
                         <input type="email" id="email" name="email" placeholder="Enter email address" required>
                     </div>
                 </div>
-
-                <!-- Row 2: Contact and Appointment Date -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="phone">Contact:</label>
@@ -105,28 +100,20 @@ $result = $conn->query($sql);
                         <input type="date" id="appointment_date" name="date" required>
                     </div>
                 </div>
-
-                <!-- Row 3: Service and Appointment Time -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="service_id">Service:</label>
                         <select id="service_id" name="service_id" required>
                             <option value="">Select Service</option>
                             <?php
-                            // Populate services dynamically
-                            $services_sql = "SELECT service_id, service_name FROM services";
-                            $services_result = $conn->query($services_sql);
-
                             if ($services_result->num_rows > 0):
                                 while ($service = $services_result->fetch_assoc()):
                             ?>
                                     <option value="<?php echo htmlspecialchars($service['service_id']); ?>">
                                         <?php echo htmlspecialchars($service['service_name']); ?>
                                     </option>
-                                <?php
-                                endwhile;
-                            else:
-                                ?>
+                                <?php endwhile;
+                            else: ?>
                                 <option value="">No services available</option>
                             <?php endif; ?>
                         </select>
@@ -136,24 +123,18 @@ $result = $conn->query($sql);
                         <input type="time" id="time" name="time" required>
                     </div>
                 </div>
-
-                <!-- Row 4: Address -->
                 <div class="form-row full-width">
                     <div class="form-group">
                         <label for="address">Address:</label>
                         <textarea id="address" name="address" placeholder="Enter address" required></textarea>
                     </div>
                 </div>
-
-                <!-- Row 5: Problem -->
                 <div class="form-row full-width">
                     <div class="form-group">
                         <label for="problem">Problem:</label>
                         <textarea id="problem" name="problem" placeholder="Describe the problem" required></textarea>
                     </div>
                 </div>
-
-                <!-- Row 6: Status -->
                 <div class="form-row full-width">
                     <div class="form-group">
                         <label for="status">Status:</label>
@@ -162,16 +143,17 @@ $result = $conn->query($sql);
                         </select>
                     </div>
                 </div>
-
-                <!-- Submit Button -->
                 <div class="form-row full-width">
                     <button type="submit" name="add_appointment">Add Appointment</button>
                 </div>
             </form>
+        </section>
+
     </div>
+
     <!-- Appointment List Section -->
     <section class="appointment-list-section">
-        <h2> List Of Appointments </h2>
+        <h2>All Appointments</h2>
         <table class="appointment-list">
             <thead>
                 <tr>
@@ -189,23 +171,20 @@ $result = $conn->query($sql);
             <tbody>
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row['appointment_id']; ?></td>
-                        <td><?php echo $row['name']; ?></td>
-                        <td><?php echo $row['phone']; ?></td>
-                        <td><?php echo $row['service_name']; ?></td>
-                        <td><?php echo $row['problem']; ?></td>
-                        <td><?php echo $row['date']; ?></td>
-                        <td><?php echo $row['time']; ?></td>
-                        <td><?php echo $row['status']; ?></td>
+                        <td><?php echo htmlspecialchars($row['appointment_id']); ?></td>
+                        <td><?php echo htmlspecialchars($row['name']); ?></td>
+                        <td><?php echo htmlspecialchars($row['phone']); ?></td>
+                        <td><?php echo htmlspecialchars($row['service_name']); ?></td>
+                        <td><?php echo htmlspecialchars($row['problem']); ?></td>
+                        <td><?php echo htmlspecialchars($row['date']); ?></td>
+                        <td><?php echo htmlspecialchars($row['time']); ?></td>
+                        <td><?php echo htmlspecialchars($row['status']); ?></td>
                         <td>
                             <a href="edit_appointment.php?edit_id=<?php echo $row['appointment_id']; ?>" class="edit-btn">Edit</a>
                             <a href="admin_appointment.php?delete_id=<?php echo $row['appointment_id']; ?>" class="delete-btn" onclick="return confirm('Are you sure you want to cancel this appointment?');">Cancel</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
-
-                <script src="/project_wad/javascipt/admin_appointment_validation.js"></script>
-
             </tbody>
         </table>
     </section>

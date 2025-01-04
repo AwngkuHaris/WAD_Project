@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <!-- Header -->
-    <?php include('../../../header.php'); ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
 
     <!-- Breadcrumb Section -->
     <section class="breadcrumb">
@@ -85,6 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <!-- Footer -->
-    <?php include('../../../footer.php'); ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
 </body>
 </html>

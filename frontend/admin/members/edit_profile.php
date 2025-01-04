@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
     <div class="edit-profile-container">
         <h1>Edit Member Profile</h1>
         <form method="POST">

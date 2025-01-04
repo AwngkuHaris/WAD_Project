@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>footer</title>
     <link rel="stylesheet" href="styles/index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -20,32 +21,13 @@
                 <p>31, Lor Uni Garden 1, 94300 Kota Samarahan, Sarawak</p>
                 <p>019-400 1241</p>
             </div>
-            <div class="footer-section">
-                <h4>Account</h4>
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Login / Register</a></li>
-                    <li><a href="#">Booking List</a></li>
-                    <li><a href="#">Doctors</a></li>
-                    <li><a href="#">Services</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Link</h4>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms Of Use</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
+          
             <div class="footer-section">
                 <h4>Follow us</h4>
-                <img src="qr-code.png" alt="QR Code" class="qr-code">
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/p/Klinik-Pergigian-Anmas-Samarahan-61557534173385/" target="_blank" class="social-link" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
                 </div>
             </div>
         </div>

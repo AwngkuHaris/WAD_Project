@@ -24,15 +24,17 @@ $edit_appointment = $result->fetch_assoc();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Appointment</title>
     <link rel="stylesheet" href="/project_wad/styles/admin/admin_appointment.css">
 </head>
+
 <body>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
 
     <section class="breadcrumb">
         <div class="breadcrumb-container">
@@ -63,6 +65,7 @@ $edit_appointment = $result->fetch_assoc();
 
             <label for="appointment_date">Appointment Date:</label>
             <input type="date" id="appointment_date" name="appointment_date" value="<?php echo $edit_appointment['date']; ?>" required>
+
 
             <label for="time">Appointment Time:</label>
             <input type="time" id="time" name="time" value="<?php echo $edit_appointment['time']; ?>" required>
@@ -97,10 +100,11 @@ $edit_appointment = $result->fetch_assoc();
         </form>
 
         <script src="/project_wad/javascipt/admin_appointment_validation.js"></script>
-        
+
     </div>
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
 
 </body>
+
 </html>

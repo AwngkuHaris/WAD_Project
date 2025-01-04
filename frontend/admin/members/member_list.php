@@ -27,7 +27,7 @@ if ($result && $result->num_rows > 0) {
 </head>
 
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
     <div class="greetings">
         <h1>Dashboard / Member list</h1>
         <h2>Member List</h2>
@@ -90,6 +90,8 @@ if ($result && $result->num_rows > 0) {
         </section>
 
     </div>
+
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
 
     <script src="/project_wad/javascript/member_list.js"></script>
 

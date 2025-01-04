@@ -25,9 +25,13 @@ async function checkEmailExists(email) {
 // Set the maximum date for the date input field to today's date (YYYY-MM-DD format)
 function setMaxDateForDateOfBirth() {
     const today = new Date();
-    const formattedToday = today.toISOString().split('T')[0];
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(today.getDate()).padStart(2, '0');
+    const formattedToday = `${year}-${month}-${day}`;
     document.getElementById('dateOfBirth').setAttribute('max', formattedToday);
 }
+
 
 async function validateForm(event) {
     // Prevent default form submission

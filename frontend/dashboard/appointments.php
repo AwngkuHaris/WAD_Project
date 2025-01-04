@@ -50,7 +50,7 @@ $conn->close();
 </head>
 
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/user_header.php'; ?>
     <div class="greetings">
         <h1>Dashboard</h1>
         <h2>Welcome Back <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h2>

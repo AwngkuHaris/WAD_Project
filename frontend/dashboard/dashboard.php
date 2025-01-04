@@ -83,7 +83,7 @@ $conn->close();
 </head>
 
 <body>
-    <?php include '../../header.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/user_header.php'; ?>
     <div class="greetings">
         <h1>Dashboard</h1>
         <h2>Welcome Back <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h2>
@@ -106,20 +106,6 @@ $conn->close();
 
         <main class="main-content">
             <section class="top-section">
-                <div class="notifications">
-                    <h3>Notifications</h3>
-                    <div class="notification-item">
-                        <div class="circle"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <button class="delete-btn">X</button>
-                    </div>
-                    <div class="notification-item">
-                        <div class="circle"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <button class="delete-btn">X</button>
-                    </div>
-                </div>
-
                 <div class="upcoming-appointments">
                     <h3>Upcoming Appointments</h3>
                     <?php if (count($future_appointments) > 0): ?>

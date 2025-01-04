@@ -18,7 +18,7 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-    <?php include('../../../header.php'); ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
 
     <!-- Breadcrumb Section -->
     <section class="breadcrumb">
@@ -86,7 +86,7 @@ $result = $conn->query($sql);
         </div>
     </div>
 
-    <?php include('../../../footer.php'); ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
 </body>
 
 </html>

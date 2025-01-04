@@ -124,6 +124,6 @@
     </section>
 
     <!-- Footer Section -->
-    <?php include('../../footer.php'); ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
 </body>
 </html>
