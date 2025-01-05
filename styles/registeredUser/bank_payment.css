@@ -1,0 +1,169 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.payment-container, .online-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2, h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.details-group, .postal-group {
+    margin-bottom: 5px;
+}
+
+.address-group {
+    margin-top: 15px;
+    margin-bottom:5px;
+}
+
+.details-group-inline {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.details-group-inline input {
+    width: 50%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.details-group-inline input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.consent-text {
+    font-size: 12px; 
+    color: #555; 
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.bank-option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.bank-option:hover {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+}
+
+.bank-option img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.bank-option label {
+    flex-grow: 1;
+    text-align: left;
+    font-weight: 500;
+    color: #555;
+}
+
+.bank-option input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.payment-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: darkblue;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab.active {
+    background-color: #007BFF;
+    color: #fff;
+    border-color: #007BFF;
+}
+
+.tab:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.payment-section {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .payment-container, .online-container {
+        width: 90%;
+    }
+}

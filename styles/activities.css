@@ -3,59 +3,160 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    background-color: #f5f7fa;
+    line-height: 1.6;
+    color: #333;
 }
 
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    /* Adds a black border */
+    position: relative;
+    /* Needed for positioning the arrow */
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    position: relative;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    /* Smooth transition */
+}
+
+.menu a:hover {
+    background-color: #d6dbee;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    /* Raised shadow */
+    transform: translateY(-3px);
+    /* Moves the button upward slightly */
+}
+
+.menu a:active {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    /* Smaller shadow for pressed effect */
+    transform: translateY(2px);
+    /* Moves the button down slightly */
+}
+
+.menu a::after {
+    content: '➔';
+    /* Unicode arrow character */
+    position: absolute;
+    right: 15px;
+    /* Position the arrow 15px from the right edge */
+    top: 50%;
+    /* Center the arrow vertically */
+    transform: translateY(-50%);
+    /* Adjust for exact centering */
+    font-size: 1em;
+    color: #444444;
+    /* Match the text color */
+}
+
+
+.menu a:hover::after {
+    color: #000;
+    /* Optional: Change arrow color on hover */
+}
 /* Breadcrumb Section */
-.breadcrumb {
-    background-color: #CAD6FF; /* Light blue background */
-    padding: 40px 20px; /* Add space above and below */
-    text-align: left; /* Align text to the left */
-    border-bottom: 1px solid #ccc; /* Optional: Add a bottom border for separation */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Ensure text aligns to the left */
+    padding-left: 20px; /* Optional: Add padding for better spacing */
+}
+/* Breadcrumb Container */
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Align all text to the left */
+    padding: 0 20px;
 }
 
 .breadcrumb-container {
     max-width: 1200px;
-    margin: 0 auto; /* Center container horizontally */
+    margin: 0 auto;
 }
 
 .breadcrumb-container p {
     font-size: 1.1em;
     color: #555;
-    margin: 0;
-    font-weight: 500;
 }
 
-.breadcrumb-container p a:hover {
-    text-decoration: underline; /* Underline link on hover */
-    color: #333; /* Darker color on hover */
+/* Breadcrumb Text */
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0; /* Remove unnecessary margins */
 }
 
+/* Breadcrumb Header */
 .breadcrumb-container h1 {
+    text-align: left !important; /* Force left alignment */
+    margin: 0 !important; /* Reset margins */
     font-size: 2.6em;
     color: #000;
-    margin-top: 10px; /* Space between breadcrumb text and title */
-    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    text-align: left; /* Ensure left alignment for the entire section */
+    background-color: #dde3f0;
+    padding: 40px 20px;
+}
+
+.breadcrumb {
+    display: block; /* Ensure it’s a block element */
     text-align: left;
 }
 
 /* Main Content Layout */
-.big_content {
+.content {
     display: flex;
     max-width: 1200px;
     margin: 40px auto;
     gap: 20px;
     padding: 0 20px;
-}
-
-.vm_content {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
 }
 
 /* Blog Posts Section */
@@ -85,33 +186,6 @@ body {
     align-items: center;
     box-sizing: border-box; /* Ensure padding doesn't affect the size */
 }
-
-.vm_post-thumbnail {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.vm_post-thumbnail img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.vm_post-meta {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.vm_post-excerpt {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #444;
-    text-align: justify;
-}
-
 .post-details {
     padding: 20px;
     text-align: left;
@@ -130,11 +204,7 @@ body {
 
 .post-excerpt {
     font-size: 1em;
-    line-height: 1.4;
-    display: block;
-    text-overflow: 100px;
-    word-wrap: break-word;
-    overflow: hidden;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
@@ -231,6 +301,63 @@ body {
     padding: 2px 6px;
     border-radius: 3px;
 }
+/* Form Container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Increase spacing between elements */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Form Title */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px; /* Space below the title */
+    color: #333;
+}
+
+/* Add spacing above the first label */
+.form-container label:first-of-type {
+    margin-top: 20px;
+}
+
+/* Form Inputs and Textarea */
+.form-container .form-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+}
+
+/* Textarea */
+.form-container textarea {
+    resize: vertical;
+    height: 200px;
+}
+
+/* Submit Button */
+.form-container button {
+    width: 200px;
+    align-self: center;
+    background: #1f09e8;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.form-container button:hover {
+    background: #3a57a1;
+    transition: 0.3s;
+}
 
 /* Horizontal Line for Separation */
 hr {
@@ -239,9 +366,106 @@ hr {
     margin: 25px 0;
 }
 
+.admin-actions .read-more {
+    display: inline-block;
+    background: #1f09e8;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
 
+.admin-actions .read-more:hover {
+    background: #3a57a1;
+    transition: 0.3s;
+}
 
+/* Table Styling */
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: left;
+}
 
+.activity-table th, .activity-table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
 
+.activity-table th {
+    background-color: #f4f4f9;
+    font-weight: bold;
+}
 
+.activity-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Buttons in the Table */
+.edit-button {
+    background-color: #1f09e8;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.edit-button:hover {
+    background-color: #3a57a1;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.delete-button:hover {
+    background-color: #a71d2a;
+}
+
+/* Centered Create Button */
+.create-button {
+    display: inline-block;
+    background: #1f09e8; /* Primary button color */
+    color: white;
+    padding: 12px 25px; /* Larger padding for emphasis */
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em; /* Slightly larger font size */
+    font-weight: bold;
+    margin-bottom: 20px; /* Space below the button */
+    text-align: center;
+}
+
+.create-button:hover {
+    background: #3a57a1; /* Hover effect */
+    transition: 0.3s;
+}
+
+/* Full-width image styling */
+img.full-width {
+    width: 100%; /* Make the image take the full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    margin-bottom: 15px; /* Optional: Add spacing below the image */
+    object-fit: cover; /* Ensures the image fits within the container */
+}
+/* Ensure the parent container has a defined width */
+.post-details {
+    max-width: 600px; /* Set a maximum width */
+    margin: 0 auto; /* Center the container */
+    padding: 10px; /* Add padding for spacing */
+}
+img.full-width {
+    width: 100%;
+    height: 300px; /* Set a fixed height */
+    object-fit: cover; /* Crop the image to fit */
+}
 

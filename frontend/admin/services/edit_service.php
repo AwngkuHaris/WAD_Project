@@ -53,15 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="dashboard-container">
         <aside class="sidebar">
             <nav class="menu">
-                <a href="/project_wad/frontend/admin/dashboard/admin_dashboard.php">Dashboard</a>
+            <a href="/project_wad/frontend/admin/dashboard/admin_dashboard.php">Dashboard</a>
                 <a href="/project_wad/frontend/admin/members/member_list.php">Member List</a>
-                <a href="#">Appointment</a>
+                <a href="/project_wad/frontend/admin/appointment/admin_appointment.php">Appointment</a>
                 <a href="/project_wad/frontend/admin/payment/payment_list.php">Payment List</a>
-                <a href="#">Services</a>
+                <a href="/project_wad/frontend/admin/services/services.php">Services</a>
                 <a href="/project_wad/frontend/admin/activities/manage_activities.php">Activities</a>
-                <a href="#">Doctors</a>
+                <a href="/project_wad/frontend/admin/doctors/manage_doctors.php">Doctors</a>
                 <a href="/project_wad/frontend/admin/promotions/manage_promotions.php">Promotions</a>
-                <a href="logout.php">Log Out</a>
+                <a href="/project_wad/backend/logout.php">Log Out</a>
             </nav>
         </aside>
         <div class="container">

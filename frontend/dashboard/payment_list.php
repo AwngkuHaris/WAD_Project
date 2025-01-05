@@ -67,7 +67,7 @@ $conn->close();
 </head>
 
 <body>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/user_header.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/user_header.php'; ?>
     <div class="greetings">
         <h1>Dashboard</h1>
         <h2>Welcome Back <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h2>
@@ -76,11 +76,11 @@ $conn->close();
     <div class="dashboard-container">
         <aside class="sidebar">
             <nav class="menu">
-                <a href="/project_wad/frontend/dashboard/dashboard.php">Dashboard</a>
-                <a href="#">Profile</a>
+            <a href="/project_wad/frontend/dashboard/dashboard.php">Dashboard</a>
+                <a href="/project_wad/frontend/dashboard/profile.php">Profile</a>
                 <a href="/project_wad/frontend/dashboard/user_services.php">Services</a>
-                <a href="/project_wad/frontend/dashboard/book_appointment.php">Appointment</a>
-                <a href="/project_wad/frontend/dashboard/payment_page.php">Payments</a>
+                <a href="/project_wad/frontend/dashboard/appointments.php">Appointment</a>
+                <a href="/project_wad/frontend/dashboard/payment_list.php">Payments</a>
                 <a href="/project_wad/frontend/dashboard/user_cart.php">Cart</a>
                 <a href="/project_wad/backend/logout.php">Log Out</a>
             </nav>
@@ -111,10 +111,11 @@ $conn->close();
                                     <td><?php echo htmlspecialchars($payment['appointment_time']); ?></td>
                                     <td>RM<?php echo number_format($payment['amount'], 2); ?></td>
                                     <td>
-                                        <form action="/project_wad/backend/process_payment.php" method="POST">
+                                        <form action="/project_wad/frontend/dashboard/bank_payment.php" method="GET">
                                             <input type="hidden" name="payment_id" value="<?php echo htmlspecialchars($payment['payment_id']); ?>">
                                             <button type="submit" class="pay-btn">Pay Now</button>
                                         </form>
+
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

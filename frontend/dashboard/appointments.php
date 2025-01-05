@@ -59,11 +59,11 @@ $conn->close();
     <div class="dashboard-container">
         <aside class="sidebar">
             <nav class="menu">
-                <a href="/project_wad/frontend/dashboard/dashboard.php">Dashboard</a>
-                <a href="#">Profile</a>
+            <a href="/project_wad/frontend/dashboard/dashboard.php">Dashboard</a>
+                <a href="/project_wad/frontend/dashboard/profile.php">Profile</a>
                 <a href="/project_wad/frontend/dashboard/user_services.php">Services</a>
-                <a href="/project_wad/frontend/dashboard/book_appointment.php">Appointment</a>
-                <a href="/project_wad/frontend/dashboard/payment_page.php">Payments</a>
+                <a href="/project_wad/frontend/dashboard/appointments.php">Appointment</a>
+                <a href="/project_wad/frontend/dashboard/payment_list.php">Payments</a>
                 <a href="/project_wad/frontend/dashboard/user_cart.php">Cart</a>
                 <a href="/project_wad/backend/logout.php">Log Out</a>
             </nav>

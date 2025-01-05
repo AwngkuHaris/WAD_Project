@@ -30,7 +30,7 @@ $recent_result = $conn->query($recent_sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activities</title>
-    <link rel="stylesheet" href="/project_wad/styles/activities.css">
+    <link rel="stylesheet" href="/project_wad/styles/guest_activities.css">
 </head>
 <body>
     <!-- Header Section -->

@@ -154,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['service_id']) && isse
             throw new Exception("Email failed to send. Mailer Error: {$mail->ErrorInfo}");
         }
 
-        echo "<script>alert('Appointment booked successfully! A confirmation email has been sent.'); window.location.href = '/project_wad/frontend/dashboard/dashboard.php';</script>";
+        echo "<script>alert('Appointment booked successfully! A confirmation email has been sent.'); window.location.href = '/frontend/dashboard/payment_list.php';</script>";
     } catch (Exception $e) {
         // Rollback transaction in case of error
         $conn->rollback();
