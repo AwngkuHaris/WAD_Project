@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $author = $_POST['author'];
 
     // Upload image
-    $target_dir = "../../images/activities/";
+    $target_dir = $_SERVER['DOCUMENT_ROOT'] . '/project_wad/images/activities/';
     $target_file = $target_dir . basename($image);
     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
 
@@ -30,12 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/project_wad/styles/activities.css">
+    <link rel="stylesheet" href="/project_wad/styles/admin/admin_activities.css?v=1.0">
     <title>Create Activity</title>
 </head>
 <body>
     <!-- Header -->
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
 
      <!-- Breadcrumb Section -->
      <section class="breadcrumb">
@@ -45,11 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </section>
 
-    <div class="content">
+    <div class="box_content">
     <div class="blog-posts">
         <div class="post">
             <div class="post-details">
-                <h1>Create New Activity</h1>
+            <h2 style="text-align: center;">Create New Activity</h2>
                 <form action="" method="POST" enctype="multipart/form-data" class="form-container">
                     <!-- Image Upload -->
                     <label for="image">Image:</label>

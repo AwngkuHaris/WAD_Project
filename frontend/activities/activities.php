@@ -39,12 +39,12 @@ $recent_result = $conn->query($recent_sql);
    <!-- Breadcrumb Section -->
    <section class="breadcrumb">
         <div class="breadcrumb-container">
-            <p><a href="index.php">Home</a> / Activities</p>
+            <p><a href="/project_wad/index.php">Home</a> / Activities</p>
             <h1>Activities</h1>
         </div>
     </section>
 
-    <div class="content">
+    <div class="big_content">
         <!-- Blog Posts Section -->
         <div class="blog-posts">
             <?php if ($search_query): ?>
@@ -56,13 +56,13 @@ $recent_result = $conn->query($recent_sql);
                     <div class="post">
                         <!-- Post Thumbnail -->
                         <div class="post-thumbnail">
-                        <img src="../../images/activities/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="/project_wad/images/activities/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
 
                         <!-- Post Details -->
                         <div class="post-details">
                             <div class="post-meta">Posted on <?php echo date('F j, Y', strtotime($row['posted_date'])); ?> by <?php echo htmlspecialchars($row['author']); ?></div>
-                            <h2 class="post-title"><?php echo htmlspecialchars($row['title']); ?></h2>
+                            <h5 class="post-title"><?php echo htmlspecialchars($row['title']); ?></h5>
                             <p class="post-excerpt"><?php echo htmlspecialchars($row['description']); ?></p>
                             <a href="view_activity.php?id=<?php echo $row['activity_id']; ?>" class="read-more">Read More</a>
                         </div>
@@ -107,6 +107,7 @@ $recent_result = $conn->query($recent_sql);
 </html>
 
   <!-- Footer Section -->
-  <?php include('../../footer.php'); ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
+  
 </body>
 </html>

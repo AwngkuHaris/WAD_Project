@@ -1,6 +1,9 @@
 <?php
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/backend/db_connect.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/project_wad/src/Exception.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/project_wad/src/PHPMailer.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/project_wad/src/SMTP.php';
 
 // Ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -112,7 +115,46 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['service_id']) && isse
         // Commit transaction
         $conn->commit();
 
-        echo "<script>alert('Appointment booked successfully!'); window.location.href = '/project_wad/frontend/dashboard/dashboard.php';</script>";
+        // Send Email Notification
+        $fetch_user_email_query = "SELECT fullName, email FROM users WHERE user_id = ?";
+        $stmt_user = $conn->prepare($fetch_user_email_query);
+        $stmt_user->bind_param("i", $user_id);
+        $stmt_user->execute();
+        $user_result = $stmt_user->get_result()->fetch_assoc();
+        $stmt_user->close();
+
+        $user_name = $user_result['fullName'];
+        $user_email = $user_result['email'];
+
+        $mail = new PHPMailer\PHPMailer\PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // Change to your SMTP host
+        $mail->SMTPAuth = true;
+        $mail->Username = 'hounkej@gmail.com'; // Change to your email
+        $mail->Password = 'huih mmom igao ebes'; // Change to your email app password
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        $mail->setFrom('your_email@gmail.com', 'Your Dental Place'); // Change to your email and business name
+        $mail->addAddress($user_email, $user_name);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Appointment Confirmation';
+        $mail->Body = "
+            <h3>Dear $user_name,</h3>
+            <p>Your appointment has been successfully booked with the following details:</p>
+            <p><b>Service:</b> {$payment_data['service_name']}</p>
+            <p><b>Date:</b> $appointment_date</p>
+            <p><b>Time:</b> $appointment_time_24</p>
+            <p><b>Total Amount:</b> RM" . number_format($payment_data['total_amount'], 2) . "</p>
+            <p>We look forward to seeing you!</p>
+        ";
+
+        if (!$mail->send()) {
+            throw new Exception("Email failed to send. Mailer Error: {$mail->ErrorInfo}");
+        }
+
+        echo "<script>alert('Appointment booked successfully! A confirmation email has been sent.'); window.location.href = '/project_wad/frontend/dashboard/dashboard.php';</script>";
     } catch (Exception $e) {
         // Rollback transaction in case of error
         $conn->rollback();

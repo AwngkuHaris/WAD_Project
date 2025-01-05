@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // If a new image is uploaded, update it
     if (!empty($_FILES['image']['name'])) {
         $image = $_FILES['image']['name'];
-        $target_dir = "../../images/";
+        $target_dir = $_SERVER['DOCUMENT_ROOT'] . '/project_wad/images/activities/';
         $target_file = $target_dir . basename($image);
         move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
     }
@@ -51,12 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/project_wad/styles/activities.css">
-    <title>Edit Activity</title>
+    <link rel="stylesheet" href="/project_wad/styles/admin/admin_activities.css?v=1.0">
+    <title>style="text-align: center;">Edit Activity</title>
 </head>
 <body>
     <!-- Header -->
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
 
      <!-- Breadcrumb Section -->
      <section class="breadcrumb">
@@ -66,15 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </section>
 
-    <div class="content">
+    <div class="box_content">
         <div class="blog-posts">
             <div class="post">
                 <div class="post-details">
-                    <h1>Edit Activity</h1>
+                    <h2 style="text-align: center;">Edit Activity</h2>
                     <form action="" method="POST" enctype="multipart/form-data" class="form-container">
                         <!-- Image -->
                         <label for="image">Current Image:</label>
-                        <img src="../../images/<?php echo htmlspecialchars($activity['image']); ?>" alt="<?php echo htmlspecialchars($activity['title']); ?>" style="width: 100%; max-height: 200px; object-fit: cover; margin-bottom: 10px;">
+                        <img src="/project_wad/images/activities/<?php echo htmlspecialchars($activity['image']); ?>" alt="<?php echo htmlspecialchars($activity['title']); ?>">
                         <label for="image">Upload New Image:</label>
                         <input type="file" id="image" name="image" class="form-input">
                         <hr>

@@ -13,13 +13,13 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/project_wad/styles/activities.css">
+    <link rel="stylesheet" href="/project_wad/styles/admin/admin_activities.css?v=1.0">
     <title>Manage Activities</title>
 </head>
 
 <body>
     <!-- Header -->
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/admin_header.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/header.php'; ?>
 
     <!-- Breadcrumb Section -->
     <section class="breadcrumb">
@@ -31,25 +31,23 @@ $result = $conn->query($sql);
 
     <div class="dashboard-container">
         <aside class="sidebar">
-        <nav class="menu">
-        <a href="/project_wad/frontend/admin/dashboard/admin_dashboard.php">Dashboard</a>
+            <nav class="menu">
+                <a href="/project_wad/frontend/admin/dashboard/admin_dashboard.php">Dashboard</a>
                 <a href="/project_wad/frontend/admin/members/member_list.php">Member List</a>
-                <a href="#">Appointment</a>
+                <a href="/project_wad/frontend/admin/appointment/admin_appointment.php">Appointment</a>
                 <a href="/project_wad/frontend/admin/payment/payment_list.php">Payment List</a>
                 <a href="/project_wad/frontend/admin/services/services.php">Services</a>
                 <a href="/project_wad/frontend/admin/activities/manage_activities.php">Activities</a>
                 <a href="/project_wad/frontend/admin/doctors/manage_doctors.php">Doctors</a>
                 <a href="/project_wad/frontend/admin/promotions/manage_promotions.php">Promotions</a>
-                <a href="logout.php">Log Out</a>
+                <a href="/project_wad/backend/logout.php">Log Out</a>
             </nav>
         </aside>
         <!-- Main Content Section -->
         <div class="content">
             <div class="blog-posts">
-                <div class="post">
-                    <div class="post-details">
-                        <a href="create_activity.php" class="create-button" style="margin-bottom: 20px;">Create New Activity</a>
-                    </div>
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <a href="create_activity.php" class="create-button" style="margin-bottom: 20px;">Create New Activity</a>
                 </div>
                 <!-- Table for Activities -->
                 <table class="activity-table">
@@ -86,9 +84,9 @@ $result = $conn->query($sql);
             </div>
         </div>
     </div>
-
     <!-- Footer -->
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/project_wad/footer.php'; ?>
+
 </body>
 
 </html>

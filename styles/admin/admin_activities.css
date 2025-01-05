@@ -1,0 +1,326 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    background-color: #CAD6FF; /* Light blue background */
+    padding: 40px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0;
+    font-weight: 500;
+}
+
+.breadcrumb-container p a:hover {
+    text-decoration: underline;
+    color: #333;
+}
+
+.breadcrumb-container h1 {
+    font-size: 2.6em;
+    color: #000;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Main Content Layout */
+.dashboard-container {
+    display: flex;
+    margin: 0;
+    padding: 20px;
+    gap: 20px; /* Space between sidebar and main content */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+.menu {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #444;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    position: relative;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.menu a:hover {
+    background-color: #d6dbee;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Main Content */
+.content {
+    flex: 1; /* Allow the main content to take the remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the table horizontally */
+    justify-content: flex-start; /* Align content to the top */
+    padding: 35px;
+}
+
+/* Create Button */
+.create-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 250px;
+    align-self: center; /* Center within parent container */
+    margin: 20px auto; /* Center with auto margins */
+    display: block;
+}
+
+.create-button:hover {
+    background-color: #0056b3;
+}
+
+/* Table Container */
+.activity-table {
+    width: 1100px; /* Make the table occupy the full width of the content area */
+    max-width: 100%; /* Remove any width restrictions */
+    margin: 0 auto; /* Center the table horizontally */
+    border-collapse: collapse; /* Remove double borders */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+    border-radius: 8px; /* Smooth corners */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+/* Table Header */
+.activity-table thead th {
+    background-color: #0059b8;
+    color: white;
+    text-align: center;
+    padding: 12px 15px;
+    font-size: 16px; /* Increase font size for better readability */
+    font-weight: bold;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+}
+
+/* Table Cells */
+.activity-table tbody td {
+    padding: 12px 15px; /* Increase padding for better spacing */
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 16px; /* Increase font size */
+    vertical-align: middle;
+    width: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .activity-table {
+        width: 100%; /* Ensure the table takes full width on small screens */
+    }
+
+    .activity-table thead th,
+    .activity-table tbody td {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+}
+
+/* Buttons in Table */
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #007BFF;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column; /* Stack sidebar and main content */
+    }
+
+    .sidebar {
+        width: 100%; /* Sidebar takes full width on smaller screens */
+    }
+
+    .activity-table {
+        width: 100%; /* Table stretches to full width */
+    }
+}
+
+.box_content {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* Blog Posts Section */
+.blog-posts {
+    flex: 3;
+}
+
+.post {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: stretch;
+    gap: 10px; /* Space between image and content */
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+/* Post Thumbnail */
+.blog-posts .post-thumbnail {
+    width: 100%; /* Expand to the full width of the parent */
+    height: 350px; /* Adjust height as needed */
+    background-color: #cccccc; /* Optional for placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* Ensure padding doesn't affect the size */
+}
+.post-details {
+    padding: 30px;
+    
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.post-title {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+.post h2 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.post h5 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.post-excerpt {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Form Container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Increase spacing between elements */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Add spacing above the first label */
+.form-container label:first-of-type {
+    margin-top: 30px;
+}
+
+/* Form Inputs and Textarea */
+.form-container .form-input {
+    width: 100%;
+    padding: 15px;
+    padding-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+}
+
+/* Textarea */
+.form-container textarea {
+    resize: vertical;
+    height: 200px;
+}
+
+/* Submit Button */
+.form-container button {
+    width: 200px;
+    align-self: center;
+    background: #1f09e8;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.form-container button:hover {
+    background: #3a57a1;
+    transition: 0.3s;
+}
+
+/* Horizontal Line for Separation */
+hr {
+    border: none;
+    border-top: 2px solid #ddd; /* Thicker horizontal line */
+    margin: 25px 0;
+}
